@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro Configuration</description>
+   
+	<!-- define the main bussiness object of Shiro -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"> 
+		<property name="sessionManager" ref="sessionManager"></property> 
+	    <property name="realms">
+	    	<list>
+	    		<ref bean="myRealm"/>
+	    	</list>
+	    </property>  
+	    <!--  
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+		-->
+	</bean>
+	
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="sessionIdCookie.name" value="shiroSessionId"/> 
+		<property name="globalSessionTimeout" value="100000000"/>
+	</bean>
+	
+	<bean id="myRealm" class="com.qhgrain.demo.authz.UserRealm" >
+	    <property name="name" value="myRealm"/>
+	    <!-- 
+        <property name="dataSource" ref="mysqlDataSource"/>
+         -->
+	</bean>
+	<!-- 
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:cache/ehcache-shiro.xml"/>
+	</bean>
+	 -->
+	<!-- 安全认证过滤器 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<!--  -->
+		<property name="loginUrl" value="/doLogin" />
+		<!-- 
+			<property name="successUrl" value="/goMain"/>
+		-->
+		<property name="filters">
+           <map>
+               <entry key="authc" value-ref="loginAuth"/>
+           </map>
+     	</property>
+	    <property name="filterChainDefinitions">  
+	        <value>	   
+	        	/login.html=anon     	
+	       		/** = authc
+	        </value>  
+	    </property>  
+	</bean>	
+	
+	
+	<bean id="loginAuth" class="com.qhgrain.demo.authz.DbUserAuthFilter"/>
+	 
+	<!-- 用户授权信息Cache, 采用EhCache -->
+<!-- 	<bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager"/> -->
+
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	
+	<!-- AOP式方法级权限检查  -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+    	<property name="securityManager" ref="securityManager"/>
+	</bean>
+	
+</beans>
