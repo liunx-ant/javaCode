@@ -1,0 +1,69 @@
+
+var drugBasic={
+	url:{
+		//页面路径
+		homePage:"/drugBasic/home",
+		newPage:"/drugBasic/new",
+		editPage:"/drugBasic/edit/",
+		viewPage:"/drugBasic/view/",
+		//数据请求路径
+		list:"/drugBasic/list/",
+		getByInfo:"/drugBasic/getByInfo",
+		add:"/drugBasic/add",
+		update:"/drugBasic/update",
+		del:"/drugBasic/del/"
+	},
+	list:function(data,callback){
+		ajaxService.postAjax(this.url.list+data.pageNum+"/"+data.pageSize,data.params,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	},
+	getByInfo:function(data,callback){
+		ajaxService.postAjax(this.url.getByInfo,data,function(data_){
+			if(data_.result==resultMesage.sucess){
+				var msg=(data_.data);
+				$("[name=id]").val(msg.id);
+				$("[name=drugType]").val(msg.drugType);
+				$("[name=drugName]").val(msg.drugName);
+				$("[name=drugUnit]").val(msg.drugUnit);
+				$("[name=drugModel]").val(msg.drugModel);
+				$("[name=drugNumber]").val(msg.drugNumber);
+				$("[name=status]").val(msg.status);
+				$("[name=deleteFlag]").val(msg.deleteFlag);
+				callback(data_);
+			}else{
+				//返回错误时提示
+			}
+		});
+	},
+	add:function(data,callback){
+		ajaxService.postAjax(this.url.add,data,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	},
+	update:function(data,callback){
+		ajaxService.postAjax(this.url.update,data,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	},
+	del:function(id,callback){
+		ajaxService.getAjax(this.url.del+id,null,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	}
+};
+
+/**
+ * 删除数据行
+ */
+function delDrugBasicRow(obj){
+	delFromListOneRow(obj,1);
+}

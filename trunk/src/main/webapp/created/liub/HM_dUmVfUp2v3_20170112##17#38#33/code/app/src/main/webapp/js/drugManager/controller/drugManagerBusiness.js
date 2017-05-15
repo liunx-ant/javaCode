@@ -1,0 +1,77 @@
+
+var drugManager={
+	url:{
+		//页面路径
+		homePage:"/drugManager/home",
+		newPage:"/drugManager/new",
+		editPage:"/drugManager/edit/",
+		viewPage:"/drugManager/view/",
+		//数据请求路径
+		list:"/drugManager/list/",
+		getByInfo:"/drugManager/getByInfo",
+		add:"/drugManager/add",
+		update:"/drugManager/update",
+		del:"/drugManager/del/"
+	},
+	list:function(data,callback){
+		ajaxService.postAjax(this.url.list+data.pageNum+"/"+data.pageSize,data.params,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	},
+	getByInfo:function(data,callback){
+		ajaxService.postAjax(this.url.getByInfo,data,function(data_){
+			if(data_.result==resultMesage.sucess){
+				var msg=(data_.data);
+				$("[name=id]").val(msg.id);
+				$("[name=drugId]").val(msg.drugId);
+				$("[name=correlationId]").val(msg.correlationId);
+				$("[name=correlationCode]").val(msg.correlationCode);
+				$("[name=accessType]").val(msg.accessType);
+				$("[name=manufacturer]").val(msg.manufacturer);
+				$("[name=price]").val(msg.price);
+				$("[name=purpose]").val(msg.purpose);
+				$("[name=remark]").val(msg.remark);
+				$("[name=status]").val(msg.status);
+				$("[name=producedTime]").val(msg.producedTimeStr);
+				$("[name=optionTime]").val(msg.optionTimeStr);
+				$("[name=digest]").val(msg.digest);
+				$("[name=income]").val(msg.income);
+				$("[name=expenditure]").val(msg.expenditure);
+				$("[name=balance]").val(msg.balance);
+				callback(data_);
+			}else{
+				//返回错误时提示
+			}
+		});
+	},
+	add:function(data,callback){
+		ajaxService.postAjax(this.url.add,data,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	},
+	update:function(data,callback){
+		ajaxService.postAjax(this.url.update,data,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	},
+	del:function(id,callback){
+		ajaxService.getAjax(this.url.del+id,null,function(data_){
+			if(callback){
+				callback(data_);
+			}
+		});
+	}
+};
+
+/**
+ * 删除数据行
+ */
+function delDrugManagerRow(obj){
+	delFromListOneRow(obj,1);
+}

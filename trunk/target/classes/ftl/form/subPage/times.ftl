@@ -1,0 +1,1 @@
+								<input name="<#if ! object.isMain>${object.objectName}.</#if>${property.name}  type="text" class="<#if property.propertyNew.isMust>required </#if>Wdate" placeholder="请选择" onClick="WdatePicker()">

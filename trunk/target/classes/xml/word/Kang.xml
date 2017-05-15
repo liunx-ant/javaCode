@@ -1,0 +1,50 @@
+<words>
+<!--  	<api>  -->
+<!-- 		<serviceName>智慧粮库-药剂管理</serviceName>  -->
+<!-- 	 	<projectCode>apidrug</projectCode>  -->
+<!-- 		<serviceFilePath>E:\yihe\whou\maven.1468831208129\trunk\src\main\java\com\qhgrain\api\whou\drug</serviceFilePath> -->
+<!-- 		<daoFilePath>E:\yihe\whou\maven.1468831208129\trunk\src\main\java\com\qhgrain\api\whou\drug</daoFilePath>  -->
+<!-- 		<entityFilePath>E:\yihe\whou\maven.1462430664164\trunk\src\main\java\com\qhgrain\api\whou\domain\drug</entityFilePath> -->
+<!-- 	</api> -->
+<!--  	<api>  -->
+<!-- 		<serviceName>智慧粮库-入库确认</serviceName>  -->
+<!-- 	 	<projectCode>apistorage</projectCode>  -->
+<!-- 		<serviceFilePath>E:\yihe\whou\maven.1462430703580\trunk\src\main\java\com\qhgrain\api\whou\storageManage</serviceFilePath> -->
+<!-- 		<daoFilePath>E:\yihe\whou\maven.1462430703580\trunk\src\main\java\com\qhgrain\api\whou\storageManage</daoFilePath>  -->
+<!-- 		<entityFilePath>E:\yihe\whou\maven.1462430664164\trunk\src\main\java\com\qhgrain\api\whou\domain</entityFilePath> -->
+<!-- 	</api> -->
+<!-- 	<app> -->
+<!-- 		<appName>智慧粮库-药剂管理</appName> -->
+<!-- 		<projectCode>apptao0726</projectCode> -->
+<!-- 		<controllerFilePath>E:\yihe\whou\maven.1469003107214\trunk\src\main\java\com\qhgrain\app\whou\drug</controllerFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\maven.1469003107214\trunk\src\main\webapp\js\drugBasic</jsFilePath> -->
+		
+<!-- 		<jsFilePath>E:\yihe\whou\maven.1469003107214\trunk\src\main\webapp\js\drugBasic</jsFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\maven.1469003107214\trunk\src\main\webapp\js\drugDestroy</jsFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\maven.1469003107214\trunk\src\main\webapp\js\drugInStorage</jsFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\maven.1469003107214\trunk\src\main\webapp\js\drugManager</jsFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\maven.1469003107214\trunk\src\main\webapp\js\drugOrder</jsFilePath> -->
+		
+<!-- 	</app> -->
+<!-- 	<app> -->
+<!-- 		<appName>智慧粮库-安全追溯</appName> -->
+<!-- 		<projectCode>appbarcode </projectCode> -->
+<!-- 		<controllerFilePath>E:\yihe\whou\whouBarCodeApp\src\main\java\com\qhgrain\barcode\controller</controllerFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\whouBarCodeApp\src\main\webapp\js\safetyAscend.js</jsFilePath> -->
+<!-- 	</app> -->
+<!-- 	<app> -->
+<!-- 		<appName>智慧粮库-出入库</appName> -->
+<!-- 		<projectCode>appstorage</projectCode> -->
+<!-- 		<controllerFilePath>E:\yihe\whou\whouStorageManagerApp\trunk\src\main\java\com\qhgrain\storage\controller</controllerFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\whouStorageManagerApp\trunk\src\main\webapp\js\inStorage</jsFilePath> -->
+<!-- 		<jsFilePath>E:\yihe\whou\whouStorageManagerApp\trunk\src\main\webapp\js\loadingOperation</jsFilePath> -->
+<!-- 	</app> -->
+	<app>
+		<appName>智慧粮库-封仓</appName>
+		<projectCode>appwhouhuowei</projectCode>
+		<controllerFilePath>E:\yihe\whou\maven.1463105099295\trunk\src\main\java\com\qhgrain\allocation\controller</controllerFilePath>
+		<jsFilePath>E:\yihe\whou\maven.1463105099295\trunk\src\main\webapp\js\goodsChangeRecords</jsFilePath>
+	</app>
+	
+	
+</words>

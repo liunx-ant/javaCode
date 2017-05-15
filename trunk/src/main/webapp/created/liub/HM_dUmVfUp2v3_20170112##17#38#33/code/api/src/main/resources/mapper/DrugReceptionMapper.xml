@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qh.api.drug.dao.DrugReceptionDao">
+	<!--药剂领用 sql-->
+ 	<resultMap id="BaseResultMap" type="com.qh.domain.drug.DrugReception">
+		<!--药剂领用 whou_drug_reception column-->
+		<result column="id" jdbcType="VARCHAR" property="id" />
+		<result column="reception_code" jdbcType="VARCHAR" property="receptionCode" />
+		<result column="registration_time" jdbcType="TIMESTAMP" property="registrationTime" />
+		<result column="reception_dep" jdbcType="VARCHAR" property="receptionDep" />
+		<result column="reception_depname" jdbcType="VARCHAR" property="receptionDepname" />
+		<result column="reception_user" jdbcType="VARCHAR" property="receptionUser" />
+		<result column="reception_username" jdbcType="VARCHAR" property="receptionUsername" />
+		<result column="warehouse" jdbcType="VARCHAR" property="warehouse" />
+		<result column="allocation" jdbcType="VARCHAR" property="allocation" />
+		<result column="purpose" jdbcType="VARCHAR" property="purpose" />
+		<result column="approve_status" jdbcType="INTEGER" property="approveStatus" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+		<result column="company_id" jdbcType="VARCHAR" property="companyId" />
+		<result column="create_userid" jdbcType="VARCHAR" property="createUserid" />
+		<result column="create_deptid" jdbcType="VARCHAR" property="createDeptid" />
+		<result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+		<result column="modify_userid" jdbcType="VARCHAR" property="modifyUserid" />
+		<result column="modify_deptid" jdbcType="VARCHAR" property="modifyDeptid" />
+		<result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+	</resultMap>
+	<!--插入字段-->
+	<sql id="whou_drug_reception_column_insert">
+		id,
+		reception_code,
+		registration_time,
+		reception_dep,
+		reception_depname,
+		reception_user,
+		reception_username,
+		warehouse,
+		allocation,
+		purpose,
+		approve_status,
+		status,
+		delete_flag,
+		company_id,
+		create_userid,
+		create_deptid,
+		create_date,
+		modify_userid,
+		modify_deptid,
+		modify_date
+	</sql>
+	<!--药剂领用 whou_drug_reception查询字段-->
+	<sql id="whou_drug_reception_column_query">
+		drugReception.id,
+		drugReception.reception_code,
+		drugReception.registration_time,
+		drugReception.reception_dep,
+		drugReception.reception_depname,
+		drugReception.reception_user,
+		drugReception.reception_username,
+		drugReception.warehouse,
+		drugReception.allocation,
+		drugReception.purpose,
+		drugReception.approve_status,
+		drugReception.status,
+		drugReception.delete_flag,
+		drugReception.company_id,
+		drugReception.create_userid,
+		drugReception.create_deptid,
+		drugReception.create_date,
+		drugReception.modify_userid,
+		drugReception.modify_deptid,
+		drugReception.modify_date
+	</sql>
+	<!--通用查询条件-->
+	<sql id="where">
+		<if test="@Ognl@IsNotEmpty(id)">
+			and drugReception.id = #{id,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(receptionCode)">
+			and drugReception.reception_code = #{receptionCode,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(registrationTime)">
+			and drugReception.registration_time = #{registrationTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(registrationTimeStartDate)">
+			and TO_DAYS(drugReception.registration_time)-TO_DAYS(#{registrationTimeStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(registrationTimeEndDate)">
+			and TO_DAYS(#{registrationTimeEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugReception.registration_time) >= 0
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(receptionDep)">
+			and drugReception.reception_dep = #{receptionDep,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(receptionDepname)">
+			and drugReception.reception_depname = #{receptionDepname,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(receptionUser)">
+			and drugReception.reception_user = #{receptionUser,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(receptionUsername)">
+			and drugReception.reception_username = #{receptionUsername,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(warehouse)">
+			and drugReception.warehouse = #{warehouse,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(allocation)">
+			and drugReception.allocation = #{allocation,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(purpose)">
+			and drugReception.purpose = #{purpose,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(approveStatus)">
+			and drugReception.approve_status = #{approveStatus,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(status)">
+			and drugReception.status = #{status,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(deleteFlag)">
+			and drugReception.delete_flag = #{deleteFlag,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(companyId)">
+			and drugReception.company_id = #{companyId,jdbcType=VARCHAR}
+		</if>
+		
+		<!--部门权限-->
+		<if test="@Ognl@IsNotEmpty(createUserid) and @Ognl@IsNotEmpty(createDeptid)">
+			and drugReception.create_userid = #{createUserid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(createDeptid)">
+			and <if test="@Ognl@IsNotEmpty(createUserid)">( </if>FIND_IN_SET(drugReception.create_deptid , #{createDeptid,jdbcType=VARCHAR}) <if test="@Ognl@IsNotEmpty(createUserid)">or drugReception.create_userid = #{createUserid,jdbcType=VARCHAR})</if>
+		</if>
+		<!--部门权限结束-->
+		
+		<if test="@Ognl@IsNotEmpty(createDate)">
+			and drugReception.create_date = #{createDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(createDateStartDate)">
+			and TO_DAYS(drugReception.create_date)-TO_DAYS(#{createDateStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(createDateEndDate)">
+			and TO_DAYS(#{createDateEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugReception.create_date) >= 0
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(modifyUserid)">
+			and drugReception.modify_userid = #{modifyUserid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(modifyDeptid)">
+			and drugReception.modify_deptid = #{modifyDeptid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(modifyDate)">
+			and drugReception.modify_date = #{modifyDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(modifyDateStartDate)">
+			and TO_DAYS(drugReception.modify_date)-TO_DAYS(#{modifyDateStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(modifyDateEndDate)">
+			and TO_DAYS(#{modifyDateEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugReception.modify_date) >= 0
+		</if>
+		
+	</sql>
+	<!--新增-->
+	<insert id="insert" parameterType="com.qh.domain.drug.DrugReception">
+		insert into whou_drug_reception (  <include refid="whou_drug_reception_column_insert" /> )
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{receptionCode,jdbcType=VARCHAR},
+			#{registrationTime,jdbcType=TIMESTAMP},
+			#{receptionDep,jdbcType=VARCHAR},
+			#{receptionDepname,jdbcType=VARCHAR},
+			#{receptionUser,jdbcType=VARCHAR},
+			#{receptionUsername,jdbcType=VARCHAR},
+			#{warehouse,jdbcType=VARCHAR},
+			#{allocation,jdbcType=VARCHAR},
+			#{purpose,jdbcType=VARCHAR},
+			#{approveStatus,jdbcType=INTEGER},
+			#{status,jdbcType=INTEGER},
+			#{deleteFlag,jdbcType=INTEGER},
+			#{companyId,jdbcType=VARCHAR},
+			#{createUserid,jdbcType=VARCHAR},
+			#{createDeptid,jdbcType=VARCHAR},
+			#{createDate,jdbcType=TIMESTAMP},
+			#{modifyUserid,jdbcType=VARCHAR},
+			#{modifyDeptid,jdbcType=VARCHAR},
+			#{modifyDate,jdbcType=TIMESTAMP}
+		)
+	</insert>	
+	
+	<!--批量新增-->
+	<insert id="insertBatch" parameterType="com.qh.domain.drug.DrugReception">
+		insert into whou_drug_reception (  <include refid="whou_drug_reception_column_insert" /> )
+		values
+		<foreach collection="list" item="item" index="index" separator="," > 
+			(
+				#{item.id,jdbcType=VARCHAR},
+				#{item.receptionCode,jdbcType=VARCHAR},
+				#{item.registrationTime,jdbcType=TIMESTAMP},
+				#{item.receptionDep,jdbcType=VARCHAR},
+				#{item.receptionDepname,jdbcType=VARCHAR},
+				#{item.receptionUser,jdbcType=VARCHAR},
+				#{item.receptionUsername,jdbcType=VARCHAR},
+				#{item.warehouse,jdbcType=VARCHAR},
+				#{item.allocation,jdbcType=VARCHAR},
+				#{item.purpose,jdbcType=VARCHAR},
+				#{item.approveStatus,jdbcType=INTEGER},
+				#{item.status,jdbcType=INTEGER},
+				#{item.deleteFlag,jdbcType=INTEGER},
+				#{item.companyId,jdbcType=VARCHAR},
+				#{item.createUserid,jdbcType=VARCHAR},
+				#{item.createDeptid,jdbcType=VARCHAR},
+				#{item.createDate,jdbcType=TIMESTAMP},
+				#{item.modifyUserid,jdbcType=VARCHAR},
+				#{item.modifyDeptid,jdbcType=VARCHAR},
+				#{item.modifyDate,jdbcType=TIMESTAMP}
+			)
+		</foreach>
+	</insert>	
+	
+	<!--修改所有-->
+	<update id="update" parameterType="com.qh.domain.drug.DrugReception">
+		update whou_drug_reception  set 
+			reception_code=#{receptionCode,jdbcType=VARCHAR},
+			registration_time=#{registrationTime,jdbcType=TIMESTAMP},
+			reception_dep=#{receptionDep,jdbcType=VARCHAR},
+			reception_depname=#{receptionDepname,jdbcType=VARCHAR},
+			reception_user=#{receptionUser,jdbcType=VARCHAR},
+			reception_username=#{receptionUsername,jdbcType=VARCHAR},
+			warehouse=#{warehouse,jdbcType=VARCHAR},
+			allocation=#{allocation,jdbcType=VARCHAR},
+			purpose=#{purpose,jdbcType=VARCHAR},
+			approve_status=#{approveStatus,jdbcType=INTEGER},
+			status=#{status,jdbcType=INTEGER},
+			delete_flag=#{deleteFlag,jdbcType=INTEGER},
+			company_id=#{companyId,jdbcType=VARCHAR},
+			modify_userid=#{modifyUserid,jdbcType=VARCHAR},
+			modify_deptid=#{modifyDeptid,jdbcType=VARCHAR},
+			modify_date=#{modifyDate,jdbcType=TIMESTAMP}
+		where 1=1
+		and id=#{id,jdbcType=VARCHAR}
+    </update>
+    
+    <!--部分修改-->
+    <update id="updateSelective" parameterType="com.qh.domain.drug.DrugReception">
+		update whou_drug_reception  
+		<set>
+		  	<if test="@Ognl@IsNotEmpty(receptionCode)">
+				reception_code=#{receptionCode,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(registrationTime)">
+				registration_time=#{registrationTime,jdbcType=TIMESTAMP},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(receptionDep)">
+				reception_dep=#{receptionDep,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(receptionDepname)">
+				reception_depname=#{receptionDepname,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(receptionUser)">
+				reception_user=#{receptionUser,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(receptionUsername)">
+				reception_username=#{receptionUsername,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(warehouse)">
+				warehouse=#{warehouse,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(allocation)">
+				allocation=#{allocation,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(purpose)">
+				purpose=#{purpose,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(approveStatus)">
+				approve_status=#{approveStatus,jdbcType=INTEGER},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(status)">
+				status=#{status,jdbcType=INTEGER},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(deleteFlag)">
+				delete_flag=#{deleteFlag,jdbcType=INTEGER},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(companyId)">
+				company_id=#{companyId,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(modifyUserid)">
+				modify_userid=#{modifyUserid,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(modifyDeptid)">
+				modify_deptid=#{modifyDeptid,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(modifyDate)">
+				modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+			</if>
+		 </set>
+		where 1=1
+		and FIND_IN_SET(id,#{id,jdbcType=VARCHAR})
+    </update>
+    
+    <!--删除-->
+    <delete id="delete">
+  		DELETE drugReception FROM whou_drug_reception drugReception where 1=1 
+		<include refid="where" /> 
+  	</delete>
+
+  	<!--查询详情-->
+	<select id="getInfo" resultMap="BaseResultMap" parameterType="com.qh.domain.drug.DrugReception" >
+    	select 
+    	<include refid="whou_drug_reception_column_query" />
+    	from 
+    	whou_drug_reception drugReception
+		where 1=1 
+		<include refid="where" /> 
+  </select>
+  
+  <!--查询列表-->
+	<select id="getAll" resultMap="BaseResultMap" parameterType="com.qh.domain.drug.DrugReception" >
+    	select 
+    	<include refid="whou_drug_reception_column_query" />
+    	from 
+    	whou_drug_reception drugReception
+		where 1=1 
+		<include refid="where" /> 
+  	</select>
+  	
+</mapper>
+

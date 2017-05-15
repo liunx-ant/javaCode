@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>     
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">     
+        
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' >     
+    <appender name="myConsole" class="org.apache.log4j.ConsoleAppender">     
+        <layout class="org.apache.log4j.PatternLayout">     
+            <param name="ConversionPattern" value="%d{HH:mm:ss,SSS} [%-4p] %m (%F:%L)%n" />     
+        </layout>    
+    </appender>     
+     
+    <appender name="debugLog" class="org.apache.log4j.RollingFileAppender">
+    	<!-- 设置日志输出文件名 -->
+        <param name="File" value="logs/debug.log" />
+        <!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="Append" value="true" />
+        <param name="Threshold" value="debug" />
+        <param name="MaxBackupIndex" value="50" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p (%F:%L) - %m%n" />     
+        </layout>     
+    </appender>
+    <appender name="warnLog" class="org.apache.log4j.RollingFileAppender">
+    	<!-- 设置日志输出文件名 -->
+        <param name="File" value="logs/warn.log" />
+        <!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="Append" value="true" />
+        <param name="Threshold" value="warn" />
+        <param name="MaxBackupIndex" value="50" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p (%F:%L) - %m%n" />     
+        </layout>     
+    </appender>
+       
+    <appender name="sqlLog" class="org.apache.log4j.DailyRollingFileAppender">     
+        <param name="File" value="logs/sql.log" />       
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />       
+        <layout class="org.apache.log4j.PatternLayout">     
+         <param name="ConversionPattern"       
+            value="[%d{MMdd HH:mm:ss SSS\} %-5p] [%t] %c{3\} - %m%n" />     
+        </layout>       
+    </appender>     
+        
+    <!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制-->     
+    <logger name="org.apache.ibatis.logging.jdbc.BaseJdbcLogger" additivity="true">     
+        <priority value ="debug"/>       
+        <appender-ref ref="sqlLog" />       
+    </logger>
+    <logger name="com.harmazing">
+    	 <priority value="debug"/> 
+    </logger>
+     
+    <!-- 根logger的设置-->     
+    <root>
+		<priority value="warn"/>  
+        <appender-ref ref="myConsole"/>  
+        <appender-ref ref="debugLog"/>  
+        <appender-ref ref="warnLog"/>  
+    </root>     
+</log4j:configuration>

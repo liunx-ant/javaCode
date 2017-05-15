@@ -1,0 +1,189 @@
+<objects>
+	<author>liub</author>
+	<version>1.2.3</version>
+	<copyright>北京超级酸</copyright>
+	<object>
+		<isMain>true</isMain>
+		<apiPackageName>com.qh.api.drug</apiPackageName>
+		<appPackageName>com.qh.app.drug</appPackageName>
+		<domainPackageName>com.qh.domain.drug</domainPackageName>
+		<className>DrugOrder</className>
+		<tableName>whou_drug_order</tableName>
+		<title>采购订单</title>
+		<properties>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="id" name="id" colType="VARCHAR" lenth="64" isPk="true" title="主键" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="hidden" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="order_code" name="orderCode" colType="VARCHAR" lenth="64" isPk="false" title="采购单号" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="department" name="department" colType="VARCHAR" lenth="64" isPk="false" title="部门" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="department_name" name="departmentName" colType="VARCHAR" lenth="64" isPk="false" title="部门名称" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="applicant" name="applicant" colType="VARCHAR" lenth="64" isPk="false" title="申请人id" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="applicant_name" name="applicantName" colType="VARCHAR" lenth="64" isPk="false" title="申请人名称" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="applicant_time" name="applicantTime" colType="TIMESTAMP" lenth="19" isPk="false" title="申请时间" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="approve_status" name="approveStatus" colType="INTEGER" lenth="11" isPk="false" title="审批状态" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="inventory_status" name="inventoryStatus" colType="INTEGER" lenth="11" isPk="false" title="入库状态" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="delete_flag" name="deleteFlag" colType="INTEGER" lenth="11" isPk="false" title="删除状态" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="true" showType="text" isMust="true" />
+				<edit isExist="true" showType="text" isMust="true" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="text" queryType="text" />
+				<list isExist="false" showType="text" orderBy=""/>
+				<view isExist="true" showType="text" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="company_id" name="companyId" colType="VARCHAR" lenth="64" isPk="false" title="公司" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="false" showType="" isMust="false" />
+				<edit isExist="false" showType="" isMust="false" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="" queryType="" />
+				<list isExist="false" showType="" orderBy=""/>
+				<view isExist="false" showType="" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="create_userid" name="createUserid" colType="VARCHAR" lenth="64" isPk="false" title="创建人" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="false" showType="" isMust="false" />
+				<edit isExist="false" showType="" isMust="false" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="" queryType="" />
+				<list isExist="false" showType="" orderBy=""/>
+				<view isExist="false" showType="" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="create_deptid" name="createDeptid" colType="VARCHAR" lenth="64" isPk="false" title="创建部门" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="false" showType="" isMust="false" />
+				<edit isExist="false" showType="" isMust="false" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="" queryType="" />
+				<list isExist="false" showType="" orderBy=""/>
+				<view isExist="false" showType="" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="create_date" name="createDate" colType="TIMESTAMP" lenth="19" isPk="false" title="创建时间" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="false" showType="" isMust="false" />
+				<edit isExist="false" showType="" isMust="false" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="" queryType="" />
+				<list isExist="false" showType="" orderBy=""/>
+				<view isExist="false" showType="" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="modify_userid" name="modifyUserid" colType="VARCHAR" lenth="64" isPk="false" title="修改人" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="false" showType="" isMust="false" />
+				<edit isExist="false" showType="" isMust="false" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="" queryType="" />
+				<list isExist="false" showType="" orderBy=""/>
+				<view isExist="false" showType="" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="modify_deptid" name="modifyDeptid" colType="VARCHAR" lenth="64" isPk="false" title="修改部门" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="false" showType="" isMust="false" />
+				<edit isExist="false" showType="" isMust="false" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="" queryType="" />
+				<list isExist="false" showType="" orderBy=""/>
+				<view isExist="false" showType="" />
+			</property>
+			<!--colType String Integer Timestamp BigDecimal-->
+			<property colName="modify_date" name="modifyDate" colType="TIMESTAMP" lenth="19" isPk="false" title="修改时间" dictType="">
+				<!--showType:/text/hidden/select/times/orgtree/usertree/org/user -->
+				<new isExist="false" showType="" isMust="false" />
+				<edit isExist="false" showType="" isMust="false" />
+				<!--queryType:like[模糊]/equal[等于]/more[匹配] -->
+				<query isExist="false" showType="" queryType="" />
+				<list isExist="false" showType="" orderBy=""/>
+				<view isExist="false" showType="" />
+			</property>
+		</properties>
+	</object>
+	 
+
+
+</objects>

@@ -1,0 +1,1 @@
+PAASOS_DEPEND_APIDRUG=http://127.0.0.1:8888/drugService/1.0.0

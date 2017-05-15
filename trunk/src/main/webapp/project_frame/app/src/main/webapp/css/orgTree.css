@@ -1,0 +1,24 @@
+.ztreeDivParent{
+	position: relative;
+}
+.ztreeDiv{
+    position: absolute;
+    top: 35px;
+    left: 70px;
+    overflow: hidden;
+    display: none;
+    z-index:100;
+}
+.ztree{
+    margin: 0;
+    padding: 5px;
+    color: #333;
+    max-height: 300px;
+    overflow-y: auto !important;
+    background: #fff;
+    border: 1px solid #ddd;
+    width: 250px;
+}
+.ztree li{
+    width: 100% ;
+}

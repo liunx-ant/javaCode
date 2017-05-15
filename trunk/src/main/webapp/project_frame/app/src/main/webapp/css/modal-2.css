@@ -1,0 +1,9 @@
+.modal-2{position: absolute;top: 0px;left: 0px;width:100%;height:100%;z-index: 99999990}
+.modal-2-bg{position: fixed;width:100%;height:100%;background: rgba(0,0,0,0.3);z-index: 99999998}
+.modal-2-iframe{width: 750px;height: 400px;margin:80px auto;background:#fff;position: relative;z-index: 99999999;box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);}
+.modal-2-header{background:#EAEAEA;border-bottom: 1px solid #D5D5D5;color:#333;font-size:14px}
+.headerName{padding:8px;}
+.modal-2-close{position:absolute;right:5px;top:9px;display: inline-block;z-index: 99999999;width:14px;height:14px;background: url("layer/default/icon.png") no-repeat -5px -55px}
+.modal-2-close:hover{cursor: pointer}
+.waite{width: 32px; height: 32px;position: absolute;top:50%;left: 50%;z-index: 99999999;background: url("layer/default/loading-1.gif") no-repeat}
+.waite:hover{cursor: wait}

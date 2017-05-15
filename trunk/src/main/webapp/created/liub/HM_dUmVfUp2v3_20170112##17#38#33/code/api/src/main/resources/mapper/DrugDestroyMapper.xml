@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qh.api.drug.dao.DrugDestroyDao">
+	<!--药剂销毁 sql-->
+ 	<resultMap id="BaseResultMap" type="com.qh.domain.drug.DrugDestroy">
+		<!--药剂基本信息 whou_drug_basic column-->
+		<result column="drugBasic$id" jdbcType="VARCHAR" property="drugBasic.id" />
+		<result column="drugBasic$drugType" jdbcType="VARCHAR" property="drugBasic.drugType" />
+		<result column="drugBasic$drugName" jdbcType="VARCHAR" property="drugBasic.drugName" />
+		<result column="drugBasic$drugUnit" jdbcType="VARCHAR" property="drugBasic.drugUnit" />
+		<result column="drugBasic$drugModel" jdbcType="VARCHAR" property="drugBasic.drugModel" />
+		<result column="drugBasic$drugNumber" jdbcType="INTEGER" property="drugBasic.drugNumber" />
+		<result column="drugBasic$status" jdbcType="INTEGER" property="drugBasic.status" />
+		<result column="drugBasic$deleteFlag" jdbcType="INTEGER" property="drugBasic.deleteFlag" />
+		<result column="drugBasic$companyId" jdbcType="VARCHAR" property="drugBasic.companyId" />
+		<result column="drugBasic$createUserid" jdbcType="VARCHAR" property="drugBasic.createUserid" />
+		<result column="drugBasic$createDeptid" jdbcType="VARCHAR" property="drugBasic.createDeptid" />
+		<result column="drugBasic$createDate" jdbcType="TIMESTAMP" property="drugBasic.createDate" />
+		<result column="drugBasic$modifyUserid" jdbcType="VARCHAR" property="drugBasic.modifyUserid" />
+		<result column="drugBasic$modifyDeptid" jdbcType="VARCHAR" property="drugBasic.modifyDeptid" />
+		<result column="drugBasic$modifyDate" jdbcType="TIMESTAMP" property="drugBasic.modifyDate" />
+		<!--药剂销毁 whou_drug_destroy column-->
+		<result column="id" jdbcType="VARCHAR" property="id" />
+		<result column="reception_id" jdbcType="VARCHAR" property="receptionId" />
+		<result column="reception_code" jdbcType="VARCHAR" property="receptionCode" />
+		<result column="destroy_code" jdbcType="VARCHAR" property="destroyCode" />
+		<result column="drug_id" jdbcType="VARCHAR" property="drugId" />
+		<result column="destroy_time" jdbcType="TIMESTAMP" property="destroyTime" />
+		<result column="destroy_number" jdbcType="INTEGER" property="destroyNumber" />
+		<result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+		<result column="source" jdbcType="VARCHAR" property="source" />
+		<result column="destroy_type" jdbcType="VARCHAR" property="destroyType" />
+		<result column="compliance" jdbcType="VARCHAR" property="compliance" />
+		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="approve_status" jdbcType="INTEGER" property="approveStatus" />
+		<result column="status" jdbcType="INTEGER" property="status" />
+		<result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+		<result column="company_id" jdbcType="VARCHAR" property="companyId" />
+		<result column="create_userid" jdbcType="VARCHAR" property="createUserid" />
+		<result column="create_deptid" jdbcType="VARCHAR" property="createDeptid" />
+		<result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+		<result column="modify_userid" jdbcType="VARCHAR" property="modifyUserid" />
+		<result column="modify_deptid" jdbcType="VARCHAR" property="modifyDeptid" />
+		<result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+		<result column="part_in" jdbcType="VARCHAR" property="partIn" />
+	</resultMap>
+	<!--插入字段-->
+	<sql id="whou_drug_destroy_column_insert">
+		id,
+		reception_id,
+		reception_code,
+		destroy_code,
+		drug_id,
+		destroy_time,
+		destroy_number,
+		manufacturer,
+		source,
+		destroy_type,
+		compliance,
+		remark,
+		approve_status,
+		status,
+		delete_flag,
+		company_id,
+		create_userid,
+		create_deptid,
+		create_date,
+		modify_userid,
+		modify_deptid,
+		modify_date,
+		part_in
+	</sql>
+	<!--药剂基本信息 whou_drug_basic查询字段-->
+	<sql id="whou_drug_basic_column_query">
+		drugBasic.id as drugBasic$id,
+		drugBasic.drug_type as drugBasic$drugType,
+		drugBasic.drug_name as drugBasic$drugName,
+		drugBasic.drug_unit as drugBasic$drugUnit,
+		drugBasic.drug_model as drugBasic$drugModel,
+		drugBasic.drug_number as drugBasic$drugNumber,
+		drugBasic.status as drugBasic$status,
+		drugBasic.delete_flag as drugBasic$deleteFlag,
+		drugBasic.company_id as drugBasic$companyId,
+		drugBasic.create_userid as drugBasic$createUserid,
+		drugBasic.create_deptid as drugBasic$createDeptid,
+		drugBasic.create_date as drugBasic$createDate,
+		drugBasic.modify_userid as drugBasic$modifyUserid,
+		drugBasic.modify_deptid as drugBasic$modifyDeptid,
+		drugBasic.modify_date as drugBasic$modifyDate
+	</sql>
+	<!--药剂销毁 whou_drug_destroy查询字段-->
+	<sql id="whou_drug_destroy_column_query">
+		drugDestroy.id,
+		drugDestroy.reception_id,
+		drugDestroy.reception_code,
+		drugDestroy.destroy_code,
+		drugDestroy.drug_id,
+		drugDestroy.destroy_time,
+		drugDestroy.destroy_number,
+		drugDestroy.manufacturer,
+		drugDestroy.source,
+		drugDestroy.destroy_type,
+		drugDestroy.compliance,
+		drugDestroy.remark,
+		drugDestroy.approve_status,
+		drugDestroy.status,
+		drugDestroy.delete_flag,
+		drugDestroy.company_id,
+		drugDestroy.create_userid,
+		drugDestroy.create_deptid,
+		drugDestroy.create_date,
+		drugDestroy.modify_userid,
+		drugDestroy.modify_deptid,
+		drugDestroy.modify_date,
+		drugDestroy.part_in
+	</sql>
+	<!--通用查询条件-->
+	<sql id="where">
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.id)">
+			and drugBasic.id = #{drugBasic.id,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.drugType)">
+			and drugBasic.drug_type = #{drugBasic.drugType,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.drugName)">
+			and drugBasic.drug_name = #{drugBasic.drugName,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.drugUnit)">
+			and drugBasic.drug_unit = #{drugBasic.drugUnit,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.drugModel)">
+			and drugBasic.drug_model = #{drugBasic.drugModel,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.drugNumber)">
+			and drugBasic.drug_number = #{drugBasic.drugNumber,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.status)">
+			and drugBasic.status = #{drugBasic.status,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.deleteFlag)">
+			and drugBasic.delete_flag = #{drugBasic.deleteFlag,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.companyId)">
+			and drugBasic.company_id = #{drugBasic.companyId,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.createUserid)">
+			and drugBasic.create_userid = #{drugBasic.createUserid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.createDeptid)">
+			and drugBasic.create_deptid = #{drugBasic.createDeptid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.createDate)">
+			and drugBasic.create_date = #{drugBasic.createDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.createDateStartDate)">
+			and TO_DAYS(drugBasic.create_date)-TO_DAYS(#{drugBasic.createDateStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.createDateEndDate)">
+			and TO_DAYS(#{drugBasic.createDateEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugBasic.create_date) >= 0
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.modifyUserid)">
+			and drugBasic.modify_userid = #{drugBasic.modifyUserid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.modifyDeptid)">
+			and drugBasic.modify_deptid = #{drugBasic.modifyDeptid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.modifyDate)">
+			and drugBasic.modify_date = #{drugBasic.modifyDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.modifyDateStartDate)">
+			and TO_DAYS(drugBasic.modify_date)-TO_DAYS(#{drugBasic.modifyDateStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(drugBasic) and @Ognl@IsNotEmpty(drugBasic.modifyDateEndDate)">
+			and TO_DAYS(#{drugBasic.modifyDateEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugBasic.modify_date) >= 0
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(id)">
+			and drugDestroy.id = #{id,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(receptionId)">
+			and drugDestroy.reception_id = #{receptionId,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(receptionCode)">
+			and drugDestroy.reception_code = #{receptionCode,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(destroyCode)">
+			and drugDestroy.destroy_code = #{destroyCode,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(drugId)">
+			and drugDestroy.drug_id = #{drugId,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(destroyTime)">
+			and drugDestroy.destroy_time = #{destroyTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(destroyTimeStartDate)">
+			and TO_DAYS(drugDestroy.destroy_time)-TO_DAYS(#{destroyTimeStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(destroyTimeEndDate)">
+			and TO_DAYS(#{destroyTimeEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugDestroy.destroy_time) >= 0
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(destroyNumber)">
+			and drugDestroy.destroy_number = #{destroyNumber,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(manufacturer)">
+			and drugDestroy.manufacturer = #{manufacturer,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(source)">
+			and drugDestroy.source = #{source,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(destroyType)">
+			and drugDestroy.destroy_type = #{destroyType,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(compliance)">
+			and drugDestroy.compliance = #{compliance,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(remark)">
+			and drugDestroy.remark = #{remark,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(approveStatus)">
+			and drugDestroy.approve_status = #{approveStatus,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(status)">
+			and drugDestroy.status = #{status,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(deleteFlag)">
+			and drugDestroy.delete_flag = #{deleteFlag,jdbcType=INTEGER}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(companyId)">
+			and drugDestroy.company_id = #{companyId,jdbcType=VARCHAR}
+		</if>
+		
+		<!--部门权限-->
+		<if test="@Ognl@IsNotEmpty(createUserid) and @Ognl@IsNotEmpty(createDeptid)">
+			and drugDestroy.create_userid = #{createUserid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(createDeptid)">
+			and <if test="@Ognl@IsNotEmpty(createUserid)">( </if>FIND_IN_SET(drugDestroy.create_deptid , #{createDeptid,jdbcType=VARCHAR}) <if test="@Ognl@IsNotEmpty(createUserid)">or drugDestroy.create_userid = #{createUserid,jdbcType=VARCHAR})</if>
+		</if>
+		<!--部门权限结束-->
+		
+		<if test="@Ognl@IsNotEmpty(createDate)">
+			and drugDestroy.create_date = #{createDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(createDateStartDate)">
+			and TO_DAYS(drugDestroy.create_date)-TO_DAYS(#{createDateStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(createDateEndDate)">
+			and TO_DAYS(#{createDateEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugDestroy.create_date) >= 0
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(modifyUserid)">
+			and drugDestroy.modify_userid = #{modifyUserid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(modifyDeptid)">
+			and drugDestroy.modify_deptid = #{modifyDeptid,jdbcType=VARCHAR}
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(modifyDate)">
+			and drugDestroy.modify_date = #{modifyDate,jdbcType=TIMESTAMP}
+		</if>
+		<if test="@Ognl@IsNotEmpty(modifyDateStartDate)">
+			and TO_DAYS(drugDestroy.modify_date)-TO_DAYS(#{modifyDateStartDate,jdbcType=TIMESTAMP}) >= 0
+		</if>
+		<if test="@Ognl@IsNotEmpty(modifyDateEndDate)">
+			and TO_DAYS(#{modifyDateEndDate,jdbcType=TIMESTAMP}) - TO_DAYS(drugDestroy.modify_date) >= 0
+		</if>
+		
+		<if test="@Ognl@IsNotEmpty(partIn)">
+			and drugDestroy.part_in = #{partIn,jdbcType=VARCHAR}
+		</if>
+		
+	</sql>
+	<!--新增-->
+	<insert id="insert" parameterType="com.qh.domain.drug.DrugDestroy">
+		insert into whou_drug_destroy (  <include refid="whou_drug_destroy_column_insert" /> )
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{receptionId,jdbcType=VARCHAR},
+			#{receptionCode,jdbcType=VARCHAR},
+			#{destroyCode,jdbcType=VARCHAR},
+			#{drugId,jdbcType=VARCHAR},
+			#{destroyTime,jdbcType=TIMESTAMP},
+			#{destroyNumber,jdbcType=INTEGER},
+			#{manufacturer,jdbcType=VARCHAR},
+			#{source,jdbcType=VARCHAR},
+			#{destroyType,jdbcType=VARCHAR},
+			#{compliance,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR},
+			#{approveStatus,jdbcType=INTEGER},
+			#{status,jdbcType=INTEGER},
+			#{deleteFlag,jdbcType=INTEGER},
+			#{companyId,jdbcType=VARCHAR},
+			#{createUserid,jdbcType=VARCHAR},
+			#{createDeptid,jdbcType=VARCHAR},
+			#{createDate,jdbcType=TIMESTAMP},
+			#{modifyUserid,jdbcType=VARCHAR},
+			#{modifyDeptid,jdbcType=VARCHAR},
+			#{modifyDate,jdbcType=TIMESTAMP},
+			#{partIn,jdbcType=VARCHAR}
+		)
+	</insert>	
+	
+	<!--批量新增-->
+	<insert id="insertBatch" parameterType="com.qh.domain.drug.DrugDestroy">
+		insert into whou_drug_destroy (  <include refid="whou_drug_destroy_column_insert" /> )
+		values
+		<foreach collection="list" item="item" index="index" separator="," > 
+			(
+				#{item.id,jdbcType=VARCHAR},
+				#{item.receptionId,jdbcType=VARCHAR},
+				#{item.receptionCode,jdbcType=VARCHAR},
+				#{item.destroyCode,jdbcType=VARCHAR},
+				#{item.drugId,jdbcType=VARCHAR},
+				#{item.destroyTime,jdbcType=TIMESTAMP},
+				#{item.destroyNumber,jdbcType=INTEGER},
+				#{item.manufacturer,jdbcType=VARCHAR},
+				#{item.source,jdbcType=VARCHAR},
+				#{item.destroyType,jdbcType=VARCHAR},
+				#{item.compliance,jdbcType=VARCHAR},
+				#{item.remark,jdbcType=VARCHAR},
+				#{item.approveStatus,jdbcType=INTEGER},
+				#{item.status,jdbcType=INTEGER},
+				#{item.deleteFlag,jdbcType=INTEGER},
+				#{item.companyId,jdbcType=VARCHAR},
+				#{item.createUserid,jdbcType=VARCHAR},
+				#{item.createDeptid,jdbcType=VARCHAR},
+				#{item.createDate,jdbcType=TIMESTAMP},
+				#{item.modifyUserid,jdbcType=VARCHAR},
+				#{item.modifyDeptid,jdbcType=VARCHAR},
+				#{item.modifyDate,jdbcType=TIMESTAMP},
+				#{item.partIn,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>	
+	
+	<!--修改所有-->
+	<update id="update" parameterType="com.qh.domain.drug.DrugDestroy">
+		update whou_drug_destroy  set 
+			reception_id=#{receptionId,jdbcType=VARCHAR},
+			reception_code=#{receptionCode,jdbcType=VARCHAR},
+			destroy_code=#{destroyCode,jdbcType=VARCHAR},
+			drug_id=#{drugId,jdbcType=VARCHAR},
+			destroy_time=#{destroyTime,jdbcType=TIMESTAMP},
+			destroy_number=#{destroyNumber,jdbcType=INTEGER},
+			manufacturer=#{manufacturer,jdbcType=VARCHAR},
+			source=#{source,jdbcType=VARCHAR},
+			destroy_type=#{destroyType,jdbcType=VARCHAR},
+			compliance=#{compliance,jdbcType=VARCHAR},
+			remark=#{remark,jdbcType=VARCHAR},
+			approve_status=#{approveStatus,jdbcType=INTEGER},
+			status=#{status,jdbcType=INTEGER},
+			delete_flag=#{deleteFlag,jdbcType=INTEGER},
+			company_id=#{companyId,jdbcType=VARCHAR},
+			modify_userid=#{modifyUserid,jdbcType=VARCHAR},
+			modify_deptid=#{modifyDeptid,jdbcType=VARCHAR},
+			modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+			part_in=#{partIn,jdbcType=VARCHAR}
+		where 1=1
+		and id=#{id,jdbcType=VARCHAR}
+    </update>
+    
+    <!--部分修改-->
+    <update id="updateSelective" parameterType="com.qh.domain.drug.DrugDestroy">
+		update whou_drug_destroy  
+		<set>
+		  	<if test="@Ognl@IsNotEmpty(receptionId)">
+				reception_id=#{receptionId,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(receptionCode)">
+				reception_code=#{receptionCode,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(destroyCode)">
+				destroy_code=#{destroyCode,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(drugId)">
+				drug_id=#{drugId,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(destroyTime)">
+				destroy_time=#{destroyTime,jdbcType=TIMESTAMP},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(destroyNumber)">
+				destroy_number=#{destroyNumber,jdbcType=INTEGER},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(manufacturer)">
+				manufacturer=#{manufacturer,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(source)">
+				source=#{source,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(destroyType)">
+				destroy_type=#{destroyType,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(compliance)">
+				compliance=#{compliance,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(remark)">
+				remark=#{remark,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(approveStatus)">
+				approve_status=#{approveStatus,jdbcType=INTEGER},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(status)">
+				status=#{status,jdbcType=INTEGER},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(deleteFlag)">
+				delete_flag=#{deleteFlag,jdbcType=INTEGER},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(companyId)">
+				company_id=#{companyId,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(modifyUserid)">
+				modify_userid=#{modifyUserid,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(modifyDeptid)">
+				modify_deptid=#{modifyDeptid,jdbcType=VARCHAR},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(modifyDate)">
+				modify_date=#{modifyDate,jdbcType=TIMESTAMP},
+			</if>
+		  	<if test="@Ognl@IsNotEmpty(partIn)">
+				part_in=#{partIn,jdbcType=VARCHAR},
+			</if>
+		 </set>
+		where 1=1
+		and FIND_IN_SET(id,#{id,jdbcType=VARCHAR})
+    </update>
+    
+    <!--删除-->
+    <delete id="delete">
+  		DELETE drugDestroy FROM whou_drug_destroy drugDestroy where 1=1 
+		<include refid="where" /> 
+  	</delete>
+
+  	<!--查询详情-->
+	<select id="getInfo" resultMap="BaseResultMap" parameterType="com.qh.domain.drug.DrugDestroy" >
+    	select 
+    	<include refid="whou_drug_destroy_column_query" />
+    	from 
+    	whou_drug_destroy drugDestroy
+		where 1=1 
+		<include refid="where" /> 
+  </select>
+  
+  <!--查询列表-->
+	<select id="getAll" resultMap="BaseResultMap" parameterType="com.qh.domain.drug.DrugDestroy" >
+    	select 
+    	<include refid="whou_drug_destroy_column_query" />
+    	from 
+    	whou_drug_destroy drugDestroy
+		where 1=1 
+		<include refid="where" /> 
+  	</select>
+  	
+  	<!--查询列表(内连接)-->
+	<select id="getAllInnerJoin" resultMap="BaseResultMap" parameterType="com.qh.domain.drug.DrugDestroy" >
+    	select 
+    	<include refid="whou_drug_basic_column_query" /> ,
+    	<include refid="whou_drug_destroy_column_query" /> 
+    	from 
+    		whou_drug_basic drugBasic,
+    		whou_drug_destroy drugDestroy
+		where 1=1 
+			and drugBasic.id=drugDestroy.drug_id 
+		<include refid="where" /> 
+  </select>
+
+  	<!--查询列表(左连接)-->
+	<select id="getAllLeftJoin" resultMap="BaseResultMap" parameterType="com.qh.domain.drug.DrugDestroy" >
+    	select 
+    	<include refid="whou_drug_basic_column_query" /> ,
+    	<include refid="whou_drug_destroy_column_query" /> 
+    	from whou_drug_destroy drugDestroy 
+			left join whou_drug_basic drugBasic  on drugDestroy.drug_id=drugBasic.id  
+		where 1=1 
+		<include refid="where" /> 
+  </select>
+</mapper>
+

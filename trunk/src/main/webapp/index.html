@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="/css/main.css"/>
+<script src="/js/common/jquery-1.8.3.min.js"></script>
+<style>
+.img-prev{
+    position: absolute;
+    left: 10px;
+    width: 70px;
+    font-size: 40px;
+    color: #ccc;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    height: 100%;
+    user-select: none;
+}
+.img-next {
+    position: absolute;
+    right: 10px;
+    width: 70px;
+    font-size: 40px;
+    color: #ccc;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    height: 100%;
+    user-select: none;
+}
+.img-prev .img-switch-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0 0 0 -18px;
+    width: 40px;
+    height: 72px;
+    background: url(//img1.bdstatic.com/static/searchdetail/img/slider_btn_icon_1fac543.png) no-repeat 0 0;
+}
+.img-prev .img-switch-btn {
+    background-position: 0 -87px;
+    margin-left: -26px;
+}
+.img-next .img-switch-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0 0 0 -18px;
+    width: 40px;
+    height: 72px;
+    background: url(//img1.bdstatic.com/static/searchdetail/img/slider_btn_icon_1fac543.png) no-repeat 0 0;
+}
+</style>
+<title>用户登录</title>
+</head>
+<body>
+<div class="ds-login-warp">
+	<div class="ds-login-cent-qh" style="margin-top: 100px;">
+		<div class="ds-login-center">
+			<div style="position: relative;width: 800px;">
+		    	<div class="ds-login-left">
+		        	<img src="/images/codePic.png" height="475px;" width="800px;"/>
+		        </div>
+	        	<span class="img-prev" href="javascript:void(0);" target="_blank" hidefocus="true" ondragstart="return false;" style="height: 475px;"><span class="img-switch-btn"></span></span>
+		        <span class="img-next" href="javascript:void(0);" target="_blank" hidefocus="true" ondragstart="return false;" style="height: 475px;"><span class="img-switch-btn"></span></span>
+			</div>
+	        <div class="ds-login-right">
+	        	<form action="list" method="POST" enctype="application/json" accept-charset="utf-8">
+		            <p class="ds-right-title mt15"><span>登录页</span></p>
+		            <div class="ds-right-from-number">
+		                <img src="../images/ds-right-numb.png"/>
+		                <input class="ds-right-number" placeholder="用户名" name="name"/>
+		            </div>
+		        </form>
+		        
+	            <a class="ds-right-button" href="javascript:$('form').submit()">登  录</a>
+	            <div style="height:30px;padding-top: 20px;text-align: right;">
+		            <a href="downWord">下载文档</a>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+<script type="text/javascript">
+ 	var imgs=["/images/codePic.png","/images/sql.png","/images/home.png","/images/add.png","/images/edit.png","/images/info.png"];
+ 	var imgNo=0;
+ 	$(".img-prev .img-switch-btn").hide();
+	$(".img-switch-btn").bind("click",function(){
+		imgNo=(($(this).parent().attr("class")=='img-prev' && imgNo>=0)?(imgNo>=0?imgNo-1:0):(imgNo+1>5?0:imgNo+1));
+		$(".ds-login-left img").attr("src",imgs[imgNo]);
+		$(".img-prev .img-switch-btn").hide();
+	});
+	var color="#ccc";
+	var background="transparent";
+	$(".img-prev,.img-next").mouseover(function(){
+		if(imgNo==0 && $(this).attr("class")=='img-prev'){
+			return;
+		}
+		$(this).css("background",color);
+		$(this).find(".img-switch-btn").show();
+		$(this).find("span").css("background-position-x","-45px");
+	});
+	$(".img-prev,.img-next").mouseout(function(){
+		$(this).css("background",background);
+		$(".img-prev .img-switch-btn").hide();
+		$(this).find("span").css("background-position-x","0px");
+	});
+</script>
+</body>
+</html>

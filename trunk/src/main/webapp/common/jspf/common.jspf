@@ -1,0 +1,38 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/layout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/groups.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/layer/layer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/zTreeStyle/zTreeStyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/orgTree.css">
+
+<script src="${pageContext.request.contextPath}/js/common/jquery-1.8.3.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/common/jquery.validate.js"></script>
+<script src="${pageContext.request.contextPath}/js/common/messages_cn.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/common/jquery-jtemplates.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/common/jquery.ztree.core.js"></script>
+<script src="${pageContext.request.contextPath}/js/common/jquery.ztree.excheck.js"></script>
+<script src="${pageContext.request.contextPath}/js/common/org-ztree.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/common/layer/layer-common.js"></script> 
+<script src="${pageContext.request.contextPath}/js/common/layer/layer.js"></script>
+
+<script	src="${pageContext.request.contextPath}/js/common/My97DatePicker/WdatePicker.js"></script>
+	
+<script src="${pageContext.request.contextPath}/js/common/left-menu.js"></script>
+<script src="${pageContext.request.contextPath}/js/common/search-more.js"></script>
+<script src="${pageContext.request.contextPath}/js/common/commonService.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/common/userZtree.js"></script>
+<script src="${pageContext.request.contextPath}/js/common/orgZtree.js"></script>
+
+
+
+
+

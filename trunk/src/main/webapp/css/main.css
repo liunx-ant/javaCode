@@ -1,0 +1,1392 @@
+ @charset "utf-8";
+
+dt,dd {
+	display:block;
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	}
+
+/* main  */
+.ds-main {
+  position: relative ;
+  width: 1200px !important;
+  margin: 0 auto;
+  margin-top: 20px;
+  overflow: hidden ;
+}
+.ds-banner {
+  width: 100%;
+  position: relative;
+}
+.ds-banner-login {
+  width: 315px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.ds-login-ul > li {
+  margin: 20px;
+  position: relative;
+}
+.ds-login-h3 {
+  font-size: 18px;
+}
+.ds-ico-user,
+.ds-ico-pw {
+  width: 20px ;
+  height: 20px ;
+  position: absolute;
+  top: 6px;
+  left: 8px;
+}
+
+.ds-ico-user{
+  background: url(../images/icon-user.png) ;	
+}
+
+.ds-ico-pw{
+  background: url(../images/icon-password.png) ;	
+}
+
+.ds-login-input {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #d8dde6;
+  border-radius: 4px;
+  background: #f8f8f8;
+  padding-left: 35px;
+}
+.ds-forget-passd {
+  color: #666;
+}
+.ds-login-btn {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  background: #ff7800;
+  border: 0;
+  border-radius: 4px;
+  font-size: 18px;
+}
+.ds-banner-btn-group {
+  position: absolute;
+  bottom: 20px;
+  left: 45%;
+}
+.ds-banner-btn {
+  display: block;
+  width: 25px;
+  height: 5px;
+  background: #454039;
+}
+.ds-banner-btn.active, .ds-banner-btn:hover {
+  background: #fff;
+}
+.ds-urlbar {
+  margin-top: 15px;
+  width: 100%;
+}
+.ds-shopping, .ds-sell, .ds-regsiter {
+  width: 390px;
+  height: 90px;
+  float: left;
+}
+.ml15 {
+  margin-left: 15px;
+}
+.mr15 {
+  margin-right: 15px;
+}
+.ds-urlbar-li {
+  background: #f0f0f0;
+}
+.ds-urlbar-a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #555;
+}
+.ds-urlbar-span {
+  width: 185px;
+  height: 70px;
+  display: block;
+  margin: 0 auto;
+  font-size: 26px;
+  line-height: 70px;
+  text-align: right;
+}
+.ds-urlbar-a:hover {
+  color: #fff;
+  background: #ffa145;
+}
+
+.ds-bg-shopping {
+  background: url("../images/shopping.png") no-repeat;
+}
+.ds-bg-sell {
+  background: url("../images/sell.png") no-repeat;
+}
+.ds-bg-reg {
+  background: url("../images/regsiter.png") no-repeat;
+}
+.ds-shopping:hover .ds-bg-shopping {
+  background: url("../images/shopping-2.png") no-repeat;
+}
+.ds-sell:hover .ds-bg-sell {
+  background: url("../images/sell-2.png") no-repeat;
+}
+.ds-regsiter:hover .ds-bg-reg {
+  background: url("../images/regsiter-2.png") no-repeat;
+}
+
+.ds-commodity {
+  width: 100%;
+  margin-top: 20px;
+}
+.ds-commodity-info {
+  width: 910px;
+}
+.ds-info-title {
+  width: 100%;
+}
+.ds-more {
+  margin-top: 8px;
+  color: #bbb;
+}
+.ds-commodity-list {
+  height: 222px ;
+  overflow: hidden;
+  border: 1px solid #dfdfdf;
+}
+.ds-commodity-li {
+  height: 185px ;
+  margin: 18px 0px 18px 18px ;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ds-commodity-li:hover .ds-small-title {
+  color: orange;
+}
+.ds-small-title {
+  margin-top: 10px;
+}
+.ds-msg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  text-align: right;
+  line-height: 80px;
+}
+.ds-msg-text {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  color: #fff;
+  font-size: 10px;
+}
+.ds-msg-green {
+  background: url("../images/msg-green.png") no-repeat;
+}
+.ds-msg-orange {
+  background: url("../images/msg-orange.png") no-repeat;
+}
+.ds-notice {
+  width: 270px;
+  margin-left: 20px;
+}
+.ds-notice-list {
+  border: 1px solid #dfdfdf;
+  padding: 15px;
+  margin-top: 10px;
+}
+.ds-font-simsun {
+  font-family: "宋体" !important;
+}
+.ds-notice-li {
+  padding: 10.1px 0;
+  border-bottom: 1px dotted #dfdfdf;
+}
+.ds-notice-li:first-child {
+  padding-top: 0;
+}
+.ds-notice-li:last-child {
+  padding-bottom: 0;
+  border: 0;
+}
+.ds-text-nowrap {
+  width: 100%;
+  display:block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #666;
+}
+.ds-text-nowrap:hover {
+  color: #ff7800;
+}
+.ds-company {
+  width: 100%;
+  margin-top: 30px;
+}
+.ds-company-list {
+  width: 270px;
+  border-left: 1px solid #dfdfdf;
+  border-top: 1px solid #dfdfdf;
+}
+.ds-company-img {
+  float: left;
+  width: 134px;
+  height: 75px;
+  border-right: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+}
+.ds-company-img:hover {
+  border: 1px solid #ff7800;
+  cursor: pointer;
+}
+.ds-product-img {
+  margin: 0 20px;
+}
+.ds-summary {
+  width: 630px;
+  height: 300px;
+  overflow: hidden;
+  padding: 20px;
+  background: #f9f9f9;
+}
+.ds-text-ind {
+  text-indent: 30px;
+  line-height: 30px;
+  color: #666;
+}
+.ds-xm-img {
+  width: 100%;
+  margin-top: 30px;
+  position: relative;
+}
+.ds-control-xm-img {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+}
+.ds-control-icon {
+  color: #fff;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.ds-control-icon:hover {
+  color: #69aaec;
+}
+.ds-control-icon.active {
+  color: #69aaec;
+}
+.ds-foodstuff, .ds-area {
+  width: 100%;
+  margin-top: 30px;
+}
+.ds-food-list, .ds-area-list {
+  padding: 10px;
+  border: 1px solid #dfdfdf;
+  border-top: 1px solid #ff7800;
+}
+.ds-food-list-con {
+  background: #f7f7f7;
+  padding: 10px 0;
+}
+.ds-food-list-con > li {
+  float: left;
+  height: 65px;
+  padding: 5px;
+  text-align: center;
+  border-left: 1px dotted #dfdfdf;
+}
+.ds-food-list-con > .ds-food-number {
+  line-height: 65px;
+  color: #ff7800;
+  font-size: 18px;
+  padding: 0 20px;
+  border: 0;
+}
+.ds-food {
+  margin: 5px;
+}
+.ds-food > li {
+  float: left;
+  padding: 0 6px;
+}
+.ds-food-a {
+  color: #333;/*原来为#666, 2016/4/28*/
+}
+.ds-food-a:hover {
+  color: #ff7800;
+}
+.ds-area-list {
+  padding: 10px 0 10px 10px;
+}
+.ds-area-list dl {
+  float: left;
+  margin-right: 9.7px;
+}
+.ds-area-list dl dt {
+  width: 160px;
+  height: 35px;
+  line-height: 35px;
+  margin-right: 0;
+  background: #ffa145;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+}
+
+.ds-area-list dl dd {
+  padding: 8px 0;
+  text-align: center;
+  border-bottom: 1px solid #fff;
+  background: #f7f7f7;
+} 
+.ds-area-a {
+  /*color: #7f7f7f;* 改为#333 2016/4/28*/
+  color:#333;
+}
+.ds-area-a.active {
+  color: #ff7800;
+}
+.ds-area-a:hover {
+  color: #ff7800;
+}
+
+
+
+/* --宽度1200px以下应用以下样式-- */
+@media (max-width: 1200px){
+  .ds-width-1000 {
+    width: 1000px;
+  }
+  .ds-login-ul > li {
+    margin: 15px;
+  }
+  .ds-shopping, .ds-sell, .ds-regsiter {
+    width: 323px;
+  }
+  .ds-notice {
+    width: 248px;
+  }
+  .ds-commodity-info {
+    width: 732px;
+  }
+  .ds-commodity-baby {
+    height: 222px;
+    overflow: hidden;
+  }
+  .ds-summary {
+    width: 430px;
+  }
+  .ds-text-ind {
+    line-height: 20px;
+  }
+
+  .ds-food {
+    margin: 5px 2px;
+  }
+  .ds-food > li {
+    float: left;
+    padding: 0 3px;
+  }
+  .ds-area-list dl dt {
+    width: 131.4px;
+  }
+}
+
+/*列表页*/
+.ds-left-menu{
+  float: left ;
+  width: 18% ;	
+}
+
+.ds-menu-con dt,
+.ds-menu-con dd{ 
+  width: 100% ;
+  height: 35px ;
+  line-height: 35px ;
+  border-bottom: 1px solid #fff ;
+}
+
+.ds-menu-con dt{
+  color: #fff ;
+  font-size: 16px ;
+  background-color: #ffa145 ;	
+}
+
+.ds-menu-con dd{
+  background-color: #f7f7f7 ;	
+}
+
+.ds-right-con{
+  float: right ;
+  width: 80.5% ;	
+}
+
+.ds-search-con{
+  position: relative ;
+  padding: 15px ;
+  margin-bottom: 10px ;
+  overflow: hidden ;
+  background: #f7f7f7 ;
+}
+
+.ds-qy-logo{
+  float: left ;
+  width: 90px ;
+  height: 90px ;
+  margin-right: 15px ;
+}
+
+.ds-search-intro{
+  position: absolute ;
+  left: 120px ; 
+  width: 90% ;
+  padding: 0px 20px ; 
+  border-left: 1px dotted #ccc ;	
+}
+
+.ds-search-intro dd{
+  text-indent: 32px ;
+  color: #666 ;
+  line-height: 22px ;
+  margin: 10px 0px ;
+}
+
+/*分页*/
+.ds-page {
+	width:80.5%;
+	float:right;
+	margin-top:20px;
+	}
+
+.ds-page ul {
+	float:right;
+	}
+
+.ds-page ul li {
+	float:left;
+	width:auto;
+	margin-left:15px;
+	line-height:30px;
+	}
+	
+.ds-page ul li a {
+	display:block;
+	padding:10px;
+	height:31px;
+	border:1px solid #ddd;
+	line-height:8px;
+	color:#666666;
+	cursor:pointer;
+	}
+
+.ds-page ul li a:hover {
+	color:#fff;
+	background:#ff7802;
+	border:1px solid #ff7802;
+	}
+	
+.ds-page ul li a.active,hover {
+	color:#fff;
+	background:#ff7802;
+	border:1px solid #ff7802;
+	}
+
+.ds-page ul li .input-page {
+	padding:10px;
+	width:50px;
+	border:1px solid #ddd;
+	}
+
+/*电子黄页详情页*/
+
+/*搜索结果*/
+.results {
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  overflow: hidden;
+  }
+
+.ds-right-show {
+  float: right;
+  width: 80.5%;
+	}
+
+.ds-search-show {
+  position: relative;
+  padding: 15px;
+  overflow: hidden;
+  background: #f7f7f7;
+	}
+
+.ds-pic-logo{
+  float: left ;
+  width: 22% ;
+  height: 22% ;
+}
+
+.ds-search-data {
+	float:right;
+  width: 76%;
+  padding: 0px 15px;
+  border-left: 1px dotted #ccc;
+	}
+
+.ds-search-data p {
+	width:50%;
+	float:left;
+	word-break: break-all;
+	}	
+
+.ds-search-data p a {
+	color:#ff7800;
+	cursor:pointer;
+	}
+	
+.ds-search-data p a:hover {
+	color:red;
+	}
+	
+.ds-title {
+	float:right;
+	width:80.5%;
+	margin-top:30px;
+	margin-bottom:10px;
+	}	
+	
+.ds-search-profiles {
+	padding:15px;
+	overflow: hidden;
+    background: #f7f7f7;
+  }	
+
+.ds-search-profiles	p {
+	 text-indent:2em;
+	 color:#666;
+	 line-height:28px;
+	 }
+
+.ds-profiles-list {
+	float:right;
+	width:80.5%;
+    overflow: hidden;
+    border: 1px solid #dfdfdf;
+}	
+
+.ds-profiles-li {
+  height: 165px ;
+  margin: 18px 0px 18px 18.5px ;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ds-profiles-li:hover .ds-small-title {
+  color: orange;
+}
+.ds-profiles-list .ds-profiles-li img {
+	width:140px;
+	height:140px;
+	}
+	
+/*供应需求详情页*/	
+.gy-food-list dl dd p.active {
+	color:#ff7800;
+	}
+
+.gy-food-list dl dd p.info {
+	float:left;
+	width:40%;
+	text-align:right;
+	}
+
+.gy-food-list dl dd p.info-fr {
+	float:left;
+	width:60%;
+	text-align:left;
+	word-break:break-all;
+	}
+
+.gy-food-list dl dd a.info-fr {
+	float:left;
+	width:60%;
+	text-align:left;
+	color:#ff7800;
+	cursor:pointer;
+	}
+
+.gy-food-list, .gy-area-list {
+  padding: 10px;
+  border: 1px solid #dfdfdf;
+  border-top: 1px solid #ff7800;
+  overflow:hidden;
+}
+
+.gy-menu-con dt,
+.gy-menu-con dd{ 
+     width: 100% ;
+    border-bottom: 1px solid #fff ;
+  	display:block;
+	padding:10px;
+	float:left;
+}
+
+.gy-menu-con dt{
+  color: #fff ;
+  font-size: 16px ;
+  background-color: #ffa145 ;	
+}
+
+.gy-menu-con dd{
+  background-color: #f7f7f7 ;	
+}
+
+.ds-search-show dl dd {
+	float:left;
+	width:100%;
+	}
+
+.ds-search-show dl dd p.info {
+	float:left;
+	width:12%;
+	text-align:left;
+	}
+
+.ds-search-show dl dd p.info-fr {
+	float:left;
+	width:88%;
+	text-align:left;
+	word-break:break-all;
+	}
+
+.ds-search-show dl dd p.info-fl {
+	float:left;
+	width:100%;
+	text-align:left;
+	word-break:break-all;
+	color:#a9a9a9;
+	}
+
+/*采购信息*/
+.cg-title {
+	float:left;
+	width:100%;
+	margin-bottom:15px;
+	}
+
+.cg-center-con {
+	width:100%;
+	float:left;
+	}
+
+.cg-food-list {
+  padding: 10px;
+  border: 1px solid #dfdfdf;
+  border-top: 1px solid #ff7800;
+}
+
+.cg-search-con{
+  position: relative ;
+  padding: 15px ;;
+  overflow: hidden ;
+  background: #f7f7f7 ;
+}
+
+.cg-centet-tit {
+	width:100%;
+	border-bottom:1px solid #d8dde6;
+	padding:10px;
+	}
+
+.cg-form {
+	width:50%;
+	margin:0 auto;
+	}
+.cg-form .ser-tit b {
+	color:#F00;
+	font-size:14px;
+	font-weight:bold;
+	margin-right:3px;
+	}
+
+input{ 
+    text-indent: 10px ;
+}
+
+ul.ser-ul {
+    list-style: outside none none;
+    margin: 0px;
+    display: inline-block;
+    clear: both;
+    padding: 0;
+}
+
+.ser-ul li {
+	width: 100% ;
+    margin-top: 15px ;
+	float:left;
+}
+
+.ser-ul li.ser-tit{
+    float: left ;
+	width: 120px ;
+	line-height: 32px ;	
+}
+
+li {
+    list-style: outside none none;
+}
+
+.ser-ul li span.ser-tit {
+    color: #666;
+    font-size: 12px;
+    width: 120px;
+    float: left;
+    height: 30px;
+    line-height: 35px;
+    margin: 0;
+    padding: 0;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.ser-ul li span.ser-tit-cg {
+    color: #666;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    line-height: 35px;
+    margin: 0;
+    padding: 0;
+    text-align:center;
+	margin:1px;
+}
+
+.inputText {
+    border: 1px solid #dcdcdc;
+    width: 284px;
+    height: 30px;
+    line-height: 30px\9;
+    line-height: 30px\9\0;
+    padding: 0px\9!important;
+    padding: 0px\9\0!important;
+    text-indent: 10px;
+    vertical-align: middle;
+	float:left;
+}
+
+.inputText-cg {
+    border: 1px solid #dcdcdc;
+    width: 132px;
+    height: 30px;
+    line-height: 30px\9;
+    line-height: 30px\9\0;
+    padding: 0px\9!important;
+    padding: 0px\9\0!important;
+    text-indent: 10px;
+    vertical-align: middle;
+}
+
+.form-control-select {
+    border-radius: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+    width: 140px;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+	}
+
+.form-search {
+    border: 1px solid #dcdcdc;
+    width: 160px;
+    height: 30px;
+    line-height: 30px\9;
+    line-height: 30px\9\0;
+    padding: 0px\9!important;
+    padding: 0px\9\0!important;
+    text-indent: 5px;
+    vertical-align: middle;
+	float:left;
+}
+
+.btn-search {
+    display: inline-block;
+    padding: 6px 10px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+	color: #fff;
+    background-color:#3276b1;
+	border:none;
+	float:left;
+	border-radius: 0 2px 2px 0;
+	}
+
+input[type="radio"]{
+	vertical-align: -1px ;
+}
+
+textarea{
+	padding: 8px ; 
+    line-height: 20px ;
+}
+
+select:focus, input[type="text"]:focus, textarea:focus {
+    border-color: #ff7800 !important;
+    outline: 0!important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .1)!important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .1)!important;
+	}
+
+/*输入文本框*/
+
+.table-textarea{
+    width: 78%;
+    min-height: 200px;
+    text-align:left ;
+    padding:6px;
+}
+
+.form-tips {
+	float: right;
+	}
+
+.btn-choose a.btn{
+	display: inline-block;
+    padding: 5px 25px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+	border-color: #d8dde6 ;
+	border-radius: 0px ;
+	background-color: #f5f5f5 ;
+	color:#000;
+	margin-right:70px;  	
+}
+
+.btn-choose a.btn:hover{
+  border-color:#ff7800;
+  background-color:#ff7800;
+  color:#fff;
+}
+
+.btn-publication {
+	width:100%;
+	margin-top:40px;
+	}
+
+.btn-publication .ser-tit{
+    float: left ;
+	width: 120px ;
+	height:40px;
+}
+
+.btn-publication button.publication {
+	float:left;
+	display:block;
+	width:150px;
+	height:40px;
+	font-size:14px;
+	background-color:#ff7800;
+	color:#fff;
+	border:1px solid #ed7001;
+	cursor:pointer;
+	}
+
+.btn-publication button.publication:hover {
+	background-color:#e66d02;}
+	
+/*用户中心*/
+.ds-user-left{
+  float: left ;
+  width: 15% ;
+  border-top: 1px solid #ff7800 ;
+  border-left: 1px solid #dfdfdf ;
+  border-bottom: 1px solid #dfdfdf ;	
+}
+
+.ds-user-left dl{
+  text-indent: 20px ;
+  background-color: #f7f7f7 ;		
+}
+
+.ds-user-left dl dt{
+  height: 45px ;
+  line-height: 45px ;
+  color: #ff7800 ;
+  border-right: 1px solid #dfdfdf ;
+}
+
+.ds-user-left dl dd{
+  height: 42px ;
+  line-height: 42px ;
+  border: 0px ;	
+}
+
+.ds-user-left dl dd a{
+  display: block ;
+  color: #333 ;
+  border-right: 1px solid #dfdfdf ;
+  border-top: 1px solid #dfdfdf ;
+}
+
+.ds-user-left dl dd a:hover,
+.ds-user-left dl dd a.active{
+  color: #ff7800 ;
+  background-color: #fff ;
+  border-left: 3px solid #ff7800 ;	
+}
+
+.ds-user-left dl dd a.active{
+  border-right: 1px solid #fff ;
+}
+
+.ds-user-right{
+  float: right ;
+  width: 83.5% ;
+  border: 1px solid #dfdfdf;
+  border-top: 1px solid #dfdfdf;	
+}
+
+.ds-from-group{
+  line-height: 32px ;	
+  overflow: hidden ;
+}
+
+.ds-user-title{
+  height: 45px ;
+  line-height: 45px ;
+  background-color: #f7f7f7 ;	
+}
+
+.ds-user-title li{
+  float: left ;
+  width: 160px ;
+  text-align: center ;
+  line-height: 45px ;	
+}
+
+.ds-user-title li.active{
+  background: #fff ;
+  border-top: 3px solid #ff7800 ;		
+}
+
+.ds-user-main{
+  padding: 20px 20px 40px 20px ;	
+}
+
+.ds-user-from{
+  width: 100% ;	
+}
+
+.ds-user-from li{
+  width: 100% ;
+  margin-top: 20px ;
+  overflow: hidden ;	
+}
+
+.ds-user-from li .ds-from-left{
+  float: left ;
+  width: 180px ;
+  color: #666 ;
+  text-align: right ;
+  line-height: 34px ;
+  padding-right: 5px ;	
+}
+
+.ds-inp-control{
+  width: 285px ;	
+}
+
+.ds-inp-w70{
+  width: 70px ;	
+}
+
+.ds-inp-w140{
+  width: 140px ;	
+}
+
+.ds-inp-w185{
+  width: 185px ;	
+}
+
+.ds-btn{
+  float:left;
+  display:block;
+  padding: 8px 25px ;
+  font-size:14px;
+  color:#fff;
+  cursor:pointer;
+  border: 0px;
+  line-height:18px;
+}
+
+.ds-btn-orange{
+  background-color:#ff7800;
+}
+
+.ds-btn-orange:hover {
+  background-color:#f57300;
+}
+
+.ds-btn-default{
+  color: #333 ;
+  background-color: #f8f8f8 ;
+  border: 1px solid #dfdfdf ;	
+}
+
+.ds-btn-default:hover{
+  background-color: #ebebeb ;	
+}
+
+.ds-btn-upload{
+  height: 32px ;
+  line-height: 32px ;
+  border-left: 0px ;	
+}
+
+.ds-company-edit{
+  padding: 15px ;
+}
+
+.ds-company-title{
+  height: 38px ;
+  line-height: 38px ;
+  text-indent: 25px ;
+  background-color: #f8f8f8 ;	
+}
+
+.fs-company-form{
+  padding-bottom: 30px ;
+  border: 1px solid #eee ;	
+}
+
+.ds-step{ 
+  padding: 20px 0px 30px 94px ; 
+  overflow: hidden ;
+}
+
+.ds-step dl{ 
+  float: left ;
+  width: auto ;
+  margin-right: 30px ;
+}
+
+.ds-step dl dt{
+  float: left ;
+  width: 44px ;
+  height: 44px ;
+  line-height: 44px ;
+  font-size: 22px ;
+  font-weight: bold ;
+  color: #fff ;
+  text-align: center ;
+  background: url(../images/ico-step-gray.png) no-repeat ;	
+}
+
+.ds-step dl dd{
+  float: left ;
+  line-height: 44px ;
+  font-size: 18px ;
+  margin-left: 10px ;	
+}
+
+.ds-step dl .icon-step-sj{
+  float: left ;
+  width: 25px ;
+  height: 27px ;
+  margin-top: 10px ;
+  background: url(../images/icon-step-sj.png) no-repeat ;	
+}
+
+.ds-step dl.active dt{
+  background: url(../images/ico-step-orange.png) no-repeat ;  	
+}
+
+.ds-step dl.active dd{
+  color: #ff7800 ;	
+}
+
+.btn-publication button.btn-disabled {
+	float:left;
+	display:block;
+	width:150px;
+	height:40px;
+	font-size:14px;
+	background-color:#ccc;
+	color:#ddd;
+	border:1px solid #ccc;
+}
+
+
+/*公告列表*/
+.ds-notice-header{
+    width: 100% ;
+	line-height: 32px ;
+	overflow: hidden ;
+	margin-bottom: 15px ;	
+}
+
+.ds-notice-con dl{
+    height: 42px ;
+	line-height: 42px ;
+	padding: 0px 20px ;	
+	border-top: 1px dashed #eee ;
+}
+
+.ds-notice-con dl dt{
+	float: left ;
+}
+
+.ds-notice-con dl dd{
+    float: right ;	
+	color: #999 ;
+}
+
+.ds-notice-con dl.ds-notice-title{
+	height: 42px ;
+	line-height: 42px ;
+	font-weight: bold ;
+	background-color: #f8f8f8 ;	
+}
+
+.ds-notice-con dl.ds-notice-title dd{
+    color: #333 ;	
+}
+
+.ds-point-orange,
+.ds-notice-con dl a:hover{
+    color: #ff7800 ;	
+}
+.ds-nolist-btn {
+	width: 80px ;
+	background: #666;
+}
+
+/*登录页样式*/
+.ds-login-cent-qh {
+	width: 100% ;
+	background: #e78d22 ;
+	}
+
+.ds-login-center {
+	width:1240px;
+	height:475px;
+	margin:0 auto;
+	}
+
+.ds-login-left {
+	float:left;
+	width: 500px ;
+	height:290px;
+	text-align: center ;
+	}
+
+.ds-login-right {
+	float:right;
+	width:350px;
+	height:370px;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 30px ;
+	margin-top: 55px ;
+	}
+
+.ds-login-right .ds-right-center {
+	}/*login change*/
+
+.ds-login-right .ds-right-title span{
+	text-align:left;
+	padding:5px 5px 5px 0;
+	color:#666;
+	font-size:20px;
+	font-weight:500;
+	}
+
+.ds-login-right .ds-right-title a {
+	float:right;
+	line-height:32px;
+	font-size:14px;
+	color:#ff7800;
+	cursor:pointer;
+	}
+.ds-login-right .ds-right-title a:hover {
+	text-decoration:underline !important;
+	}
+
+.ds-right-title-number,.ds-right-title-password {
+	text-align:left;
+	padding:5px 5px 5px 0;
+	color:#666;
+	font-size:15px;
+	font-weight:500;
+	}
+
+.ds-right-from-number {
+	padding:10px;
+	background-color:#fff;
+	border-radius: 5px;
+	height:18px;
+	border:1px solid #ccc;
+	margin-top: 20px;
+	}
+
+.ds-right-from-number img {
+	float:left;
+	}
+
+.ds-right-from-number input.ds-right-number {
+    float: left;
+    margin-left: 5px;
+    margin-top: -9px;
+    width: 307px;
+    border: 0;
+    background: none;
+    color: #afafaf;
+    font-size: 14px;
+    height: 35px;
+    line-height: inherit !important;
+	}
+
+.ds-right-from-password {
+	padding:10px;
+	background-color:#fff;
+	border-radius: 5px;
+	height:40px;
+	border:1px solid #ccc;
+	}
+
+.ds-right-from-password img {
+	float:left;
+	}
+
+.ds-right-from-password input.ds-right-password {
+	float:left;
+	margin-left:5px;
+	width:210px;
+	border:0;
+	background:none;
+	color:#afafaf;
+	font-size:14px;
+	height: auto !important;
+    line-height: inherit !important;
+	}
+
+.ds-right-remember input.ds-right-fruit {
+	float:left;
+	margin-top:4px;
+	margin-right:4px;
+	}
+
+.ds-right-remember span.ds-right-number {
+	color:#666;
+	}
+
+.ds-right-remember a.ds-right-password {
+	color:#666;
+	float:right;
+	cursor: pointer;
+	text-decoration:underline !important;
+	}
+
+.ds-right-remember a.ds-right-password:hover {
+	color:#ff7800;
+	}
+
+.ds-login-right a.ds-right-button {
+	display:block;
+	padding:7px;
+	text-align:center;
+	color:#fff;
+	font-size:18px;
+	background-color:#ec971f;
+	height:25px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 20px;
+	}
+.ds-login-right a.ds-right-button:hover {
+	background-color:#e66c00;
+	}
+
+.ds-login-foot {
+	width:100%;
+	}
+
+.ds-login-foot-list {
+	width:1200px;
+	margin:0 auto;
+	}
+	
+.ds-login-foot-list p {
+	text-align:center;
+	color:#666;
+	}
+
+.ds-login-foot-list p a {
+	padding:5px;
+	color:#666;
+	cursor: pointer;
+	}
+.ds-login-foot-list p a:hover {
+	color:#ff7800;
+	}
+	
+/*20160504 wangxuexia add login*/
+.ds-width-990{
+  margin: 0 auto ;
+  width: 950px ;	
+}
+
+/*.ds-login-warp{
+posItion: absolute ;
+width: 100% ;
+height: 670px ;
+top: 50% ;	
+margin-top: -435px ;
+}*/

@@ -1,0 +1,146 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<!-- 药剂销毁表格模版 (列表)-->
+	<textarea id="drugDestroyTableTemplateTxt" style="display: none">
+	<![CDATA[
+		{#template MAIN}
+			 <table class="table-form table-bordered table-hover table-ellipsis table-fixed" style="min-width: 1000px">
+				<thead>
+				<tr>
+					<th width="3%" ><input type="checkbox" id="checkAll"></th>
+					<th width="5%">序号</th>
+					<th>药剂类别</th>
+					<th>药剂名称</th>
+					<th>计量单位</th>
+					<th>规格型号</th>
+					<th>销毁编码</th>
+					<th>销毁日期</th>
+					<th>数量</th>
+					<th>生产厂家</th>
+					<th>残渣来源</th>
+				</tr>
+				</thead>
+				<tbody>
+			<!-- 增加序号定义
+				$P startNum 定义每页开始行号
+				$P index 定义行索引
+				-->
+				{#param name=startNum value=($T.pageNum - 1) * $T.pageSize }
+				{#param name=sumWeigth value=0}
+				{#param name=sumPrice value=0}
+				{#foreach $T.list as row}
+					{#param name=index value=($P.startNum + $T.row$index + 1)}
+						<tr>
+							<td><input type="checkbox" value="{$T.row.id}" index="{$P.index}" name="check"></td>		
+							<td>{$P.index}</td>
+							<td class="text-left" title="{#if $T.row.drugBasic.drugType !=null}{$T.row.drugBasic.drugType}{#/if}">
+								{#if $T.row.drugBasic.drugType !=null}
+									{$T.row.drugBasic.drugType}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.drugBasic.drugName !=null}{$T.row.drugBasic.drugName}{#/if}">
+								{#if $T.row.drugBasic.drugName !=null}
+									{$T.row.drugBasic.drugName}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.drugBasic.drugUnit !=null}{$T.row.drugBasic.drugUnit}{#/if}">
+								{#if $T.row.drugBasic.drugUnit !=null}
+									{$T.row.drugBasic.drugUnit}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.drugBasic.drugModel !=null}{$T.row.drugBasic.drugModel}{#/if}">
+								{#if $T.row.drugBasic.drugModel !=null}
+									{$T.row.drugBasic.drugModel}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.destroyCode !=null}{$T.row.destroyCode}{#/if}">
+								{#if $T.row.destroyCode !=null}
+									{$T.row.destroyCode}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.destroyTime !=null}{$T.row.destroyTimeStr}{#/if}">
+								{#if $T.row.destroyTime !=null}
+									{$T.row.destroyTimeStr}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.destroyNumber !=null}{$T.row.destroyNumber}{#/if}">
+								{#if $T.row.destroyNumber !=null}
+									{$T.row.destroyNumber}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.manufacturer !=null}{$T.row.manufacturer}{#/if}">
+								{#if $T.row.manufacturer !=null}
+									{$T.row.manufacturer}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.source !=null}{$T.row.source}{#/if}">
+								{#if $T.row.source !=null}
+									{$T.row.source}
+								{#/if}
+						</td>
+					</tr>
+				{#/for}
+					{#if $T.list.length>0}
+					{#else}
+						<tr>    
+							<td colspan=11 class="text-left">无符合条件数据</td>
+						</tr>
+					{#/if}
+				</tbody>
+			</table>
+		{#/template MAIN}
+	]]>
+	</textarea>
+
+	<!-- 药剂基本信息附属表模版 (详情/修改用)-->
+	<textarea id="drugDestroydrugBasicTableTemplateTxt" style="display: none">
+	<![CDATA[
+		{#template MAIN}
+			 <table class="table-form table-bordered table-hover table-ellipsis table-fixed" style="min-width: 1000px">
+				<thead>
+				<tr>
+					<th width="5%">序号</th>
+					<th><em class="text-red mr5">*</em>药剂类别</th>
+					<th><em class="text-red mr5">*</em>药剂名称</th>
+					<th><em class="text-red mr5">*</em>计量单位</th>
+					<th><em class="text-red mr5">*</em>规格型号</th>
+					<th width="14%">操作</th>
+				</tr>
+				</thead>
+				<tbody>
+			<!-- 增加序号定义
+				$P startNum 定义每页开始行号
+				$P index 定义行索引
+				-->
+				{#param name=startNum value=0 }
+				{#foreach $T as row}
+					{#param name=index value=($P.startNum + $T.row$index + 1)}
+						<tr>           
+							<td>{$P.index}</td>
+							<td class="text-left">
+								<input type="text" name="drugBasicList[{$P.index-1}].drugType" value="{$T.row.drugType ||''}" class="w100 required "></input>
+							</td>
+							<td class="text-left">
+								<input type="text" name="drugBasicList[{$P.index-1}].drugName" value="{$T.row.drugName ||''}" class="w100 required "></input>
+							</td>
+							<td class="text-left">
+								<input type="text" name="drugBasicList[{$P.index-1}].drugUnit" value="{$T.row.drugUnit ||''}" class="w100 required "></input>
+							</td>
+							<td class="text-left">
+								<input type="text" name="drugBasicList[{$P.index-1}].drugModel" value="{$T.row.drugModel ||''}" class="w100 required "></input>
+							</td>
+							<td class="text-left">
+								<a href="javascript:void(0)" class="link-blue" onclick="delDrugDestroyRow(this)"><i class="fa fa-times mr5"></i>删除</a>
+							</td>
+						</tr>
+				{#/for}
+					{#if $T.length>0}
+						{#else}
+						<tr>    
+							<td colspan=6 class="text-left">无符合条件数据</td>
+						</tr>
+					{#/if}
+				</tbody>
+			</table>
+		{#/template MAIN}
+	]]>
+	</textarea>

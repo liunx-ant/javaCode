@@ -1,0 +1,402 @@
+$("#save").bind("click",function(){
+		var isBreak=false;
+		//主表判断
+		var isMainFlag=false;
+		$("[name$=isMain]").each(function(i,item){
+			if($(item).val()=='true'){
+				if(isMainFlag){
+					layer.msg("只能有一个主表",{icon:7});
+					isBreak=true;
+				}
+				isMainFlag=$(item).val();
+			}
+		});
+		if(!isMainFlag){
+			layer.msg("请选择一个主表",{icon:7});
+			isBreak=true;
+		}
+		if(isBreak){
+			return;
+		}
+		//关联关系选择
+		var classNames=$("[name$=className");
+		var tableNames=[];
+		if(classNames.length>1){
+			var tempList=[];
+			var parentName="";
+			$("[name$=isMain]").each(function(i,item){
+				if($(item).val()=='true'){
+					parentName=$(item).attr("name").replace(".isMain","");
+				}
+			});
+			classNames.each(function(i,item){
+				var propertiesName=$(item).attr("name").replace("className","properties");
+				var tempProperties=[];
+				var propertySelect="<option value=\"key\">value1</option>";
+				$("[name^='"+propertiesName+"']").each(function(i,item){
+					if($(item).attr("name").indexOf("colName")>-1){
+						propertySelect=propertySelect.replace("key",$(item).val());
+						if(propertySelect.indexOf("key")==-1 &&propertySelect.indexOf("value1")==-1){
+							tempProperties.push(propertySelect);
+							propertySelect="<option value=\"key\">value1</option>";
+						}
+					}
+					if($(item).attr("name").indexOf("name")>-1){
+						propertySelect=propertySelect.replace("value1",$(item).val());
+						if(propertySelect.indexOf("key")==-1 &&propertySelect.indexOf("value1")==-1){
+							tempProperties.push(propertySelect);
+							propertySelect="<option value=\"key\">value1</option>";
+						}
+					}
+				});
+				tempList.push({
+					name:$(item).val(),
+					parentName:parentName,
+					isMain:$("[name^='"+$(item).attr("name").replace("className","isMain")+"']").val(),
+					properties:tempProperties
+				});
+				tableNames.push("<option value=\""+$(item).val()+"\">"+$(item).val()+"</option>");
+			});
+		}
+		var collType=[];
+		collType.push("<option value=\"oneToOne\">单条关联</option>");
+		collType.push("<option value=\"oneToMany\">多条关联</option>");
+		var trs="";
+		var relSum=0;
+		var objRels=$("#objectRel").find(":input");
+		$(tempList).each(function(i,item){
+			if(item.isMain=='false'){
+				trs+="<tr><td><input type=\"text\" readonly class=\"w85\" name=\""+item.parentName+".objectRels["+relSum+"].relClassName\" value="+item.name+"></td><td><select class=\"form-control-select\" name=\""+item.parentName+".objectRels["+relSum+"].relProperty\">"+item.properties+"</select></td><td><select class=\"form-control-select\" name=\""+item.parentName+".objectRels["+relSum+"].relToClassName\">"+tableNames+"</select></td><td><select class=\"form-control-select\" name=\""+item.parentName+".objectRels["+relSum+"].relToProperty\"></select></td><td><select class=\"form-control-select\" name=\""+item.parentName+".objectRels["+relSum+"].relType\">"+collType+"</select></td></tr>";
+				relSum++;
+			}
+		});			
+		if(!trs||trs.length==0){
+			addPageConf();
+			return;
+		}
+		var layerHtml='<div class="table-scroll">'+
+							'<div class="mb10" style="overflow:hidden;">'+
+					        	'<span class="pull-left">'+
+					        		'<button class="btn btn-default"  id="saveColl"><i class="fa fa-check mr5"></i>确认</button>'+
+					        	'</span>'+
+				   			'</div>'+
+						'<form><table class="table-form table-bordered">'+
+							'<thead>                                                                           '+
+							'	<tr>                                                                           '+
+							'		<th width="20%">对象</th>                                                     '+
+							'		<th width="20%">属性</th>                   '+
+							'		<th width="20%">关联对象</th>                   '+
+							'		<th width="20%">关联对象的属性</th>                   '+
+							'		<th width="20%">关联方式</th>                   '+
+							'	</tr>                                                                          '+
+							'</thead>                                                                          '+
+							'<tbody>                                                                           '+trs+
+							'</tbody>'+
+						'</table></form>'+
+					'</div>';  
+		layerIndex=layer.open({
+			type: 1,
+			title: '关联信息',
+			maxmin: false,
+			shadeClose: false, //点击遮罩关闭层
+			area : ['1000px' , '550px'],
+			content: layerHtml
+		});
+		$("[name$=relToClassName]").bind("change",function(){
+			var selectObj=$(this);
+			$(tempList).each(function(i,item){
+				if(item.name==selectObj.val()){
+					selectObj.parent().next().find("select").html(item.properties);
+				}
+			});
+		});
+		var rel="";
+		$("#saveColl").bind("click",function(){
+			$("#objectRel").html(trs);
+			var relArray=($(this).parent().parent().next().serializeArray());
+			$(relArray).each(function(i,item){
+				$("[name='"+item.name+"']").val(item.value);
+			});
+			layer.close(layerIndex);
+			ajaxService.postAjax("/saveXML",$("form").serialize(),function(data){
+				if(data.result=='sucess'){
+					addPageConf();
+				}
+			});
+		});
+		$("[name$=relToClassName]").change();
+		
+		$(objRels).each(function(i,item){
+			$("[name='"+$(item).attr("name")+"']").val($(item).val());
+		});
+		
+	});
+	
+	function addPageConf(){
+		var trs="";
+		$("[name=addPage]").each(function(i,item){
+			trs+="<tr>"+$(item).html().replace("/tad","</td><td>"+$(item).prev().val()+"</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>")
+			.replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>")+"</tr>";
+		});
+		var pageHtml='<div class="table-scroll">'+
+						'<div class="mb10" style="overflow:hidden;">'+
+				        	'<span class="pull-left">'+
+				        		'<button class="btn btn-default"  id="saveAdd"><i class="fa fa-check mr5"></i>确认</button>'+
+				        	'</span>'+
+							'</div>'+
+					'<form><table class="table-form table-bordered">'+
+						'<thead>                                                                           '+
+						'	<tr>                                                                           '+
+						'		<th width="10%">显示</th>                                                     '+
+						'		<th width="20%">名称</th>                   '+
+						'		<th width="20%">显示方式</th>                   '+
+						'		<th width="10%">必填</th>                   '+
+						'	</tr>                                                                          '+
+						'</thead>                                                                          '+
+						'<tbody>                                                                           '+trs+
+						'</tbody>'+
+					'</table></form>'+
+				'</div>';  
+		var index=layer.open({
+			type: 1,
+			title: '添加页面配置信息',
+			maxmin: false,
+			shadeClose: false, //点击遮罩关闭层
+			area : ['1000px' , '550px'],
+			content: pageHtml
+		});
+		$("#saveAdd").bind("click",function(){
+			var addPageList=$(this).parent().parent().next().serializeArray();
+			$("[name=addPage]").each(function(i,item){
+				$(item).find(":checkbox").each(function(j,it){
+					$(it)[0].checked=false;
+					$(it).removeAttr('checked');
+				});
+			});
+			$(addPageList).each(function(i,item){
+				if($("[name='"+item.name+"']").attr("type")=='checkbox'){
+					$("[name='"+item.name+"']").attr("checked",$("[name='"+item.name+"']")[1].checked);
+				}else{
+					$("[name='"+item.name+"']").val(item.value);
+				}
+			});
+			layer.close(index);
+			editPageConf();
+		});
+	}
+	function editPageConf(){
+		var trs="";
+		$("[name=editPage]").each(function(i,item){
+			trs+="<tr>"+$(item).html().replace("/tad","</td><td>"+$(item).prev().prev().val()+"</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>")
+			.replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>")+"</tr>";
+		});
+		var pageHtml='<div class="table-scroll">'+
+						'<div class="mb10" style="overflow:hidden;">'+
+				        	'<span class="pull-left">'+
+				        		'<button class="btn btn-default"  id="saveEdit"><i class="fa fa-check mr5"></i>确认</button>'+
+				        	'</span>'+
+							'</div>'+
+					'<form><table class="table-form table-bordered">'+
+						'<thead>                                                                           '+
+						'	<tr>                                                                           '+
+						'		<th width="10%">显示</th>                                                     '+
+						'		<th width="20%">名称</th>                   '+
+						'		<th width="20%">显示方式</th>                   '+
+						'		<th width="10%">必填</th>                   '+
+						'	</tr>                                                                          '+
+						'</thead>                                                                          '+
+						'<tbody>                                                                           '+trs+
+						'</tbody>'+
+					'</table></form>'+
+				'</div>';  
+		var index=layer.open({
+			type: 1,
+			title: '编辑页面配置信息',
+			maxmin: false,
+			shadeClose: false, //点击遮罩关闭层
+			area : ['1000px' , '550px'],
+			content: pageHtml
+		});
+		
+		$("#saveEdit").bind("click",function(){
+			var addPageList=$(this).parent().parent().next().serializeArray();
+			$("[name=editPage]").each(function(i,item){
+				$(item).find(":checkbox").each(function(j,it){
+					$(it)[0].checked=false;
+					$(it).removeAttr('checked');
+				});
+			});
+			$(addPageList).each(function(i,item){
+				if($("[name='"+item.name+"']").attr("type")=='checkbox'){
+					$("[name='"+item.name+"']").attr("checked",$("[name='"+item.name+"']")[1].checked);
+				}else{
+					$("[name='"+item.name+"']").val(item.value);
+				}
+			});
+			layer.close(index);
+			viewPageConf();
+		});
+	}
+	function viewPageConf(){
+
+		var trs="";
+		$("[name=viewPage]").each(function(i,item){
+			trs+="<tr>"+$(item).html().replace("/tad","</td><td>"+$(item).prev().prev().prev().val()+"</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>")
+			.replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>")+"</tr>";
+		});
+		var pageHtml='<div class="table-scroll">'+
+						'<div class="mb10" style="overflow:hidden;">'+
+				        	'<span class="pull-left">'+
+				        		'<button class="btn btn-default"  id="saveView"><i class="fa fa-check mr5"></i>确认</button>'+
+				        	'</span>'+
+							'</div>'+
+					'<form><table class="table-form table-bordered">'+
+						'<thead>                                                                           '+
+						'	<tr>                                                                           '+
+						'		<th width="10%">显示</th>                                                     '+
+						'		<th width="20%">名称</th>                   '+
+						'		<th width="20%">显示方式</th>                   '+
+						'	</tr>                                                                          '+
+						'</thead>                                                                          '+
+						'<tbody>                                                                           '+trs+
+						'</tbody>'+
+					'</table></form>'+
+				'</div>';  
+		var index=layer.open({
+			type: 1,
+			title: '详情页面配置信息',
+			maxmin: false,
+			shadeClose: false, //点击遮罩关闭层
+			area : ['1000px' , '550px'],
+			content: pageHtml
+		});
+		
+		$("#saveView").bind("click",function(){
+			var addPageList=$(this).parent().parent().next().serializeArray();
+			$("[name=viewPage]").each(function(i,item){
+				$(item).find(":checkbox").each(function(j,it){
+					$(it)[0].checked=false;
+					$(it).removeAttr('checked');
+				});
+			});
+			$(addPageList).each(function(i,item){
+				if($("[name='"+item.name+"']").attr("type")=='checkbox'){
+					$("[name='"+item.name+"']").attr("checked",$("[name='"+item.name+"']")[1].checked);
+				}else{
+					$("[name='"+item.name+"']").val(item.value);
+				}
+			});
+			layer.close(index);
+			queryConf();
+		});
+	}
+	function queryConf(){
+		var trs="";
+		$("[name=queryPage]").each(function(i,item){
+			trs+="<tr>"+$(item).html().replace("/tad","</td><td>"+$(item).prev().prev().prev().prev().val()+"</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>")
+			.replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>")+"</tr>";
+		});
+		var pageHtml='<div class="table-scroll">'+
+						'<div class="mb10" style="overflow:hidden;">'+
+				        	'<span class="pull-left">'+
+				        		'<button class="btn btn-default"  id="saveQuery"><i class="fa fa-check mr5"></i>确认</button>'+
+				        	'</span>'+
+							'</div>'+
+					'<form><table class="table-form table-bordered">'+
+						'<thead>                                                                           '+
+						'	<tr>                                                                           '+
+						'		<th width="10%">显示</th>                                                     '+
+						'		<th width="20%">名称</th>                   '+
+						'		<th width="20%">显示方式</th>                   '+
+						'		<th width="10%">查询方式</th>                   '+
+						'	</tr>                                                                          '+
+						'</thead>                                                                          '+
+						'<tbody>                                                                           '+trs+
+						'</tbody>'+
+					'</table></form>'+
+				'</div>';  
+		var index=layer.open({
+			type: 1,
+			title: '列表页面查询条件配置信息',
+			maxmin: false,
+			shadeClose: false, //点击遮罩关闭层
+			area : ['1000px' , '550px'],
+			content: pageHtml
+		});
+		
+		$("#saveQuery").bind("click",function(){
+			var addPageList=$(this).parent().parent().next().serializeArray();
+			$("[name=queryPage]").each(function(i,item){
+				$(item).find(":checkbox").each(function(j,it){
+					$(it)[0].checked=false;
+					$(it).removeAttr('checked');
+				});
+			});
+			$(addPageList).each(function(i,item){
+				if($("[name='"+item.name+"']").attr("type")=='checkbox'){
+					$("[name='"+item.name+"']").attr("checked",$("[name='"+item.name+"']")[1].checked);
+				}else{
+					$("[name='"+item.name+"']").val(item.value);
+				}
+			});
+			layer.close(index);
+			listConf();
+		});
+	}
+	function listConf(){
+		var trs="";
+		$("[name=listPage]").each(function(i,item){
+			trs+="<tr>"+$(item).html().replace("/tad","</td><td>"+$(item).prev().prev().prev().prev().prev().val()+"</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>").replace("/tad","</td>")
+			.replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>").replace("tad","<td>")+"</tr>";
+		});
+		var pageHtml='<div class="table-scroll">'+
+						'<div class="mb10" style="overflow:hidden;">'+
+				        	'<span class="pull-left">'+
+				        		'<button class="btn btn-default"  id="saveList"><i class="fa fa-check mr5"></i>确认</button>'+
+				        	'</span>'+
+							'</div>'+
+					'<form><table class="table-form table-bordered">'+
+						'<thead>                                                                           '+
+						'	<tr>                                                                           '+
+						'		<th width="10%">显示</th>                                                     '+
+						'		<th width="20%">名称</th>                   '+
+						'		<th width="20%">显示方式</th>                   '+
+						'		<th width="10%">排序方式</th>                   '+
+						'	</tr>                                                                          '+
+						'</thead>                                                                          '+
+						'<tbody>                                                                           '+trs+
+						'</tbody>'+
+					'</table></form>'+
+				'</div>';  
+		var index=layer.open({
+			type: 1,
+			title: '列表页面显示配置信息',
+			maxmin: false,
+			shadeClose: false, //点击遮罩关闭层
+			area : ['1000px' , '550px'],
+			content: pageHtml
+		});
+		
+		$("#saveList").bind("click",function(){
+			var addPageList=$(this).parent().parent().next().serializeArray();
+			$("[name=listPage]").each(function(i,item){
+				$(item).find(":checkbox").each(function(j,it){
+					$(it)[0].checked=false;
+					$(it).removeAttr('checked');
+				});
+			});
+			$(addPageList).each(function(i,item){
+				if($("[name='"+item.name+"']").attr("type")=='checkbox'){
+					$("[name='"+item.name+"']").attr("checked",$("[name='"+item.name+"']")[1].checked);
+				}else{
+					$("[name='"+item.name+"']").val(item.value);
+				}
+			});
+			layer.close(index);
+			ajaxService.postAjax("/saveXML",$("form").serialize(),function(data){
+				if(data.result=='sucess'){
+					window.location="/list";
+				}
+			});
+		});
+	}

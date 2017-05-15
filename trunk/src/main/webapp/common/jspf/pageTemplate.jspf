@@ -1,0 +1,64 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<!-- 表分页信息模版 -->
+	<textarea id="pageTemplate" style="display:none">
+		<![CDATA[
+	                  <div class="dataTables-length" >
+	                      每页记录
+	                          <select aria-controls="dynamic-table" class="form-page"  id="selectPageSize" >
+					<option value="10" 
+				   			{#if 10==$T.pageSize}
+				   				selected='selected'
+							{#/if}>10</option>
+				   	<option value="25"
+				   			{#if 25==$T.pageSize}
+				   				selected='selected'
+							{#/if}>25</option>
+				   	<option value="50"
+				   			{#if 50==$T.pageSize}
+				   				selected='selected'
+							{#/if}>50</option>
+				   	<option value="100"
+				   			{#if 100==$T.pageSize}
+				   				selected='selected'
+							{#/if}>100</option>						
+	                          </select>
+	                          <span class="ml5">共{$T.total}条记录</span>
+	                     
+	                  </div>
+	                  <div class="dataTables-paginate pull-right">
+	                      <ul class="pagination-user">
+	              <li>
+					{#if $T.pageNum>$T.firstPage}
+						<a href="javascript:void(0);" id="startPage">首页</a>
+					{#else}{* 没有上一页*}
+						<a href="javascript:void(0);">首页</a>
+					{#/if}
+				  </li>
+	              <li>
+				  	{#if $T.pageNum>$T.firstPage}
+						<a href="javascript:void(0);" id="prePage"">上一页</a>
+					{#else}{* 没有上一页*}
+						<a href="javascript:void(0);">上一页</a>
+					{#/if}
+				  </li>
+	              <li class="pull-left"><input type="text" value="{$T.pageNum}"  hide="{$T.pageNum}"  id="pageNum" class="inp-number">&nbsp;/<div class='text-center pager_total_pn'style='display:inline-block;width:40px;'>
+               			{$T.pages>0?$T.pages:1}</div></li>
+	              <li>
+				  	{#if $T.pageNum<$T.pages}
+						<a href="javascript:void(0);" id="nextPage">下一页</a>
+					{#else}{* 没有下一页*}
+						<a href="javascript:void(0);">下一页</a>
+					{#/if}
+				  </li>
+	              <li>
+				  	{#if $T.pageNum<$T.pages}
+						<a href="javascript:void(0);" id="endPage">尾页</a>
+					{#else}{* 没有下一页*}
+						<a href="javascript:void(0);">尾页</a>
+					{#/if}
+				  </li>
+	              <li><button class="pull-right btn-fresh mr10" pagesAttr="{$T.pages}"  id="jumpPage">跳转</button></li>
+	                      </ul>
+	                  </div>
+		]]>
+	</textarea>

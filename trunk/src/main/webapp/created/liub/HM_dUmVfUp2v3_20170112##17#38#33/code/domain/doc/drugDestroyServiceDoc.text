@@ -1,0 +1,630 @@
+
+{
+	"method": {
+		"servicePath": "/drugService/1.0.0",
+		"path": "/drugDestroy",
+		"methods": [
+			{
+				"type": "post",
+				"path": "/add",
+				"name": "add",
+				"businessName": "新增数据",
+				"encode": "UTF-8",
+				"desc": "新增数据",
+				"businessDesc": "",
+				"consumes": "json",
+				"returnDesc": "result：\"success\" ; msg: \"操作成功: \" +id.\nresult：\"ex\"; msg: \"操作失败: \"+异常信息 .",
+				"produces": "json",
+				"params": [
+					{
+						"name": "modelStr",
+						"desc": "receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n  drugBasic :{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }drugBasicList: [{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }]",
+						"source": "requestbody",
+						"type": "String"
+					}
+				]
+			},
+			{
+				"type": "post",
+				"path": "/update/
+				{
+					id
+				}
+				",
+				"name": "update",
+				"businessName": "修改数据",
+				"encode": "UTF-8",
+				"desc": "修改数据",
+				"businessDesc": "",
+				"consumes": "json",
+				"returnDesc": "result：\"success\" ; msg: \"操作成功: \" +id.\nresult：\"ex\"; msg: \"操作失败: \"+异常信息 .",
+				"produces": "json",
+				"params": [
+					{
+						"name": "id",
+						"desc": "参数id",
+						"source": "path",
+						"type": "String"
+					},
+					{
+						"name": "modelStr",
+						"desc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }drugBasicList : [{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }]",
+						"source": "requestbody",
+						"type": "String"
+					}
+				]
+			},
+			{
+				"type": "get",
+				"path": "/query/
+				{
+					id
+				}
+				",
+				"name": "queryById",
+				"businessName": "通过id查询数据",
+				"encode": "UTF-8",
+				"desc": "根据ID查询数据",
+				"businessDesc": "根据ID查询数据",
+				"consumes": "json",
+				"returnDesc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }drugBasicList : [{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }]",
+				"produces": "json",
+				"params": [
+					{
+						"name": "id",
+						"desc": "路径参数",
+						"source": "path",
+						"type": "String"
+					}
+				]
+			},
+			{
+				"type": "post",
+				"path": "/queryByInfo",
+				"name": "queryByInfo",
+				"businessName": "通过对象查询数据",
+				"encode": "UTF-8",
+				"desc": "根据对象查询数据",
+				"businessDesc": "根据对象查询数据",
+				"consumes": "json",
+				"returnDesc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }drugBasicList : [{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }]",
+				"produces": "json",
+				"params": [
+					{
+						"name": "modelStr",
+						"desc": "id: 主键  \n receptionId: 领用id  \n receptionCode: 领用编号  \n destroyCode: 销毁编码  \n drugId: 药剂id  \n destroyTime: 销毁日期  \n destroyNumber: 数量  \n manufacturer: 生产厂家  \n source: 残渣来源  \n destroyType: 销毁方式  \n compliance: 是否合规  \n remark: 备注  \n approveStatus: 审批状态  \n status: 状态  \n deleteFlag: 删除状态  \n companyId: 公司  \n createUserid: 创建人  \n createDeptid: 创建部门  \n createDate: 创建时间  \n modifyUserid: 修改人  \n modifyDeptid: 修改部门  \n modifyDate: 修改时间  \n partIn: 参与人  \n  drugBasic.id: 主键  \n drugBasic.drugType: 药剂类别  \n drugBasic.drugName: 药剂名称  \n drugBasic.drugUnit: 计量单位  \n drugBasic.drugModel: 规格型号  \n drugBasic.drugNumber: 数量  \n drugBasic.status: 状态  \n drugBasic.deleteFlag: 删除状态  \n drugBasic.companyId: 公司  \n drugBasic.createUserid: 创建人  \n drugBasic.createDeptid: 创建部门  \n drugBasic.createDate: 创建时间  \n drugBasic.modifyUserid: 修改人  \n drugBasic.modifyDeptid: 修改部门  \n drugBasic.modifyDate: 修改时间  \n ",
+						"source": "requestbody",
+						"type": "String"
+					}
+				]
+			},
+			{
+				"type": "post",
+				"path": "/page/
+				{
+					start
+				}
+				/
+				{
+					size
+				}
+				",
+				"name": "queryAll",
+				"businessName": "单表分页查询",
+				"encode": "UTF-8",
+				"desc": "根据起始页、每页大小、查询条件分页显示",
+				"businessDesc": "根据起始页、每页大小、查询条件分页显示",
+				"consumes": "json",
+				"returnDesc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }drugBasicList : [{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }]",
+				"produces": "json",
+				"params": [
+					{
+						"name": "start",
+						"desc": "起始页",
+						"source": "path",
+						"type": "Integer"
+					},
+					{
+						"name": "size",
+						"desc": "每页数量大小",
+						"source": "path",
+						"type": "Integer"
+					},
+					{
+						"name": "modelStr",
+						"desc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }",
+						"source": "requestbody",
+						"type": "String"
+					}
+				]
+			}
+  ,
+			{
+				"type": "post",
+				"path": "/pageInnerJoin/
+				{
+					start
+				}
+				/
+				{
+					size
+				}
+				",
+				"name": "queryAllInnerJoin",
+				"businessName": "分页查询(内连接)",
+				"encode": "UTF-8",
+				"desc": "根据起始页、每页大小、查询条件分页显示",
+				"businessDesc": "根据起始页、每页大小、查询条件分页显示",
+				"consumes": "json",
+				"returnDesc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }drugBasicList : [{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }]",
+				"produces": "json",
+				"params": [
+					{
+						"name": "start",
+						"desc": "起始页",
+						"source": "path",
+						"type": "Integer"
+					},
+					{
+						"name": "size",
+						"desc": "每页数量大小",
+						"source": "path",
+						"type": "Integer"
+					},
+					{
+						"name": "modelStr",
+						"desc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }",
+						"source": "requestbody",
+						"type": "String"
+					}
+				]
+			},
+			{
+				"type": "post",
+				"path": "/pageLeftJoin/
+				{
+					start
+				}
+				/
+				{
+					size
+				}
+				",
+				"name": "queryAllLeftJoin",
+				"businessName": "分页查询(左连接)",
+				"encode": "UTF-8",
+				"desc": "根据起始页、每页大小、查询条件分页显示",
+				"businessDesc": "根据起始页、每页大小、查询条件分页显示",
+				"consumes": "json",
+				"returnDesc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }drugBasicList : [{id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }]",
+				"produces": "json",
+				"params": [
+					{
+						"name": "start",
+						"desc": "起始页",
+						"source": "path",
+						"type": "Integer"
+					},
+					{
+						"name": "size",
+						"desc": "每页数量大小",
+						"source": "path",
+						"type": "Integer"
+					},
+					{
+						"name": "modelStr",
+						"desc": "id: 主键 \n receptionId: 领用id \n receptionCode: 领用编号 \n destroyCode: 销毁编码 \n drugId: 药剂id \n destroyTime: 销毁日期 \n destroyNumber: 数量 \n manufacturer: 生产厂家 \n source: 残渣来源 \n destroyType: 销毁方式 \n compliance: 是否合规 \n remark: 备注 \n approveStatus: 审批状态 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n partIn: 参与人 \n   drugBasic : {id: 主键 \n drugType: 药剂类别 \n drugName: 药剂名称 \n drugUnit: 计量单位 \n drugModel: 规格型号 \n drugNumber: 数量 \n status: 状态 \n deleteFlag: 删除状态 \n companyId: 公司 \n createUserid: 创建人 \n createDeptid: 创建部门 \n createDate: 创建时间 \n modifyUserid: 修改人 \n modifyDeptid: 修改部门 \n modifyDate: 修改时间 \n }",
+						"source": "requestbody",
+						"type": "String"
+					}
+				]
+			}
+		]
+	},
+	"testCase": [
+		{
+			"output": {
+				"result": "success",
+				"msg": "操作成功"
+			},
+			"params": [
+				{
+					"name": "modelStr",
+					"value": ""
+				}
+			],
+			"methodName": "add"
+		},
+		{
+			"output": {
+				"result": "success",
+				"msg": "操作成功"
+			},
+			"params": [
+				{
+					"name": "id",
+					"value": ""
+				},
+				{
+					"name": "modelStr",
+					"value": ""
+				}
+			],
+			"methodName": "update"
+		},
+		{
+			"output": {
+				"result": "success",
+			    "data": {
+					"id": "主键"  ,
+					"receptionId": "领用id"  ,
+					"receptionCode": "领用编号"  ,
+					"destroyCode": "销毁编码"  ,
+					"drugId": "药剂id"  ,
+					"destroyTime": "销毁日期"  ,
+					"destroyNumber": "数量"  ,
+					"manufacturer": "生产厂家"  ,
+					"source": "残渣来源"  ,
+					"destroyType": "销毁方式"  ,
+					"compliance": "是否合规"  ,
+					"remark": "备注"  ,
+					"approveStatus": "审批状态"  ,
+					"status": "状态"  ,
+					"deleteFlag": "删除状态"  ,
+					"companyId": "公司"  ,
+					"createUserid": "创建人"  ,
+					"createDeptid": "创建部门"  ,
+					"createDate": "创建时间"  ,
+					"modifyUserid": "修改人"  ,
+					"modifyDeptid": "修改部门"  ,
+					"modifyDate": "修改时间"  ,
+					"partIn": "参与人"  
+ ,
+					"drugBasic":{
+						"id": "主键" ,
+						"drugType": "药剂类别" ,
+						"drugName": "药剂名称" ,
+						"drugUnit": "计量单位" ,
+						"drugModel": "规格型号" ,
+						"drugNumber": "数量" ,
+						"status": "状态" ,
+						"deleteFlag": "删除状态" ,
+						"companyId": "公司" ,
+						"createUserid": "创建人" ,
+						"createDeptid": "创建部门" ,
+						"createDate": "创建时间" ,
+						"modifyUserid": "修改人" ,
+						"modifyDeptid": "修改部门" ,
+						"modifyDate": "修改时间" 
+				},
+					"drugBasicList":[{
+						"id": "主键" ,
+						"drugType": "药剂类别" ,
+						"drugName": "药剂名称" ,
+						"drugUnit": "计量单位" ,
+						"drugModel": "规格型号" ,
+						"drugNumber": "数量" ,
+						"status": "状态" ,
+						"deleteFlag": "删除状态" ,
+						"companyId": "公司" ,
+						"createUserid": "创建人" ,
+						"createDeptid": "创建部门" ,
+						"createDate": "创建时间" ,
+						"modifyUserid": "修改人" ,
+						"modifyDeptid": "修改部门" ,
+						"modifyDate": "修改时间" 
+					}]
+				}
+			},
+			"params": [
+				{
+					"name": "id",
+					"value": ""
+				}
+			],
+			"methodName": "queryById"
+		},
+		{
+			"output": {
+				"result": "success",
+			    "data": {
+					"id": "主键"  ,
+					"receptionId": "领用id"  ,
+					"receptionCode": "领用编号"  ,
+					"destroyCode": "销毁编码"  ,
+					"drugId": "药剂id"  ,
+					"destroyTime": "销毁日期"  ,
+					"destroyNumber": "数量"  ,
+					"manufacturer": "生产厂家"  ,
+					"source": "残渣来源"  ,
+					"destroyType": "销毁方式"  ,
+					"compliance": "是否合规"  ,
+					"remark": "备注"  ,
+					"approveStatus": "审批状态"  ,
+					"status": "状态"  ,
+					"deleteFlag": "删除状态"  ,
+					"companyId": "公司"  ,
+					"createUserid": "创建人"  ,
+					"createDeptid": "创建部门"  ,
+					"createDate": "创建时间"  ,
+					"modifyUserid": "修改人"  ,
+					"modifyDeptid": "修改部门"  ,
+					"modifyDate": "修改时间"  ,
+					"partIn": "参与人"  
+ ,
+					"drugBasic":{
+						"id": "主键" ,
+						"drugType": "药剂类别" ,
+						"drugName": "药剂名称" ,
+						"drugUnit": "计量单位" ,
+						"drugModel": "规格型号" ,
+						"drugNumber": "数量" ,
+						"status": "状态" ,
+						"deleteFlag": "删除状态" ,
+						"companyId": "公司" ,
+						"createUserid": "创建人" ,
+						"createDeptid": "创建部门" ,
+						"createDate": "创建时间" ,
+						"modifyUserid": "修改人" ,
+						"modifyDeptid": "修改部门" ,
+						"modifyDate": "修改时间" 
+					},
+					"drugBasicList":[{
+						"id": "主键" ,
+						"drugType": "药剂类别" ,
+						"drugName": "药剂名称" ,
+						"drugUnit": "计量单位" ,
+						"drugModel": "规格型号" ,
+						"drugNumber": "数量" ,
+						"status": "状态" ,
+						"deleteFlag": "删除状态" ,
+						"companyId": "公司" ,
+						"createUserid": "创建人" ,
+						"createDeptid": "创建部门" ,
+						"createDate": "创建时间" ,
+						"modifyUserid": "修改人" ,
+						"modifyDeptid": "修改部门" ,
+						"modifyDate": "修改时间" 
+					}]
+				}	
+			},
+			"params": [
+				{
+					"name": "modelStr",
+					"value": ""
+				}
+			],
+			"methodName": "queryByInfo"
+		},
+		{
+			"output": {
+				"result": "success",
+			    "data": {
+					"curPage": 1,
+					"data": [
+						{
+					"id": "主键"  ,
+					"receptionId": "领用id"  ,
+					"receptionCode": "领用编号"  ,
+					"destroyCode": "销毁编码"  ,
+					"drugId": "药剂id"  ,
+					"destroyTime": "销毁日期"  ,
+					"destroyNumber": "数量"  ,
+					"manufacturer": "生产厂家"  ,
+					"source": "残渣来源"  ,
+					"destroyType": "销毁方式"  ,
+					"compliance": "是否合规"  ,
+					"remark": "备注"  ,
+					"approveStatus": "审批状态"  ,
+					"status": "状态"  ,
+					"deleteFlag": "删除状态"  ,
+					"companyId": "公司"  ,
+					"createUserid": "创建人"  ,
+					"createDeptid": "创建部门"  ,
+					"createDate": "创建时间"  ,
+					"modifyUserid": "修改人"  ,
+					"modifyDeptid": "修改部门"  ,
+					"modifyDate": "修改时间"  ,
+					"partIn": "参与人"  
+ ,
+					"drugBasic":{
+						"id": "主键" ,
+						"drugType": "药剂类别" ,
+						"drugName": "药剂名称" ,
+						"drugUnit": "计量单位" ,
+						"drugModel": "规格型号" ,
+						"drugNumber": "数量" ,
+						"status": "状态" ,
+						"deleteFlag": "删除状态" ,
+						"companyId": "公司" ,
+						"createUserid": "创建人" ,
+						"createDeptid": "创建部门" ,
+						"createDate": "创建时间" ,
+						"modifyUserid": "修改人" ,
+						"modifyDeptid": "修改部门" ,
+						"modifyDate": "修改时间" 
+					}
+						}
+					],
+					"first": 1,
+					"last": 2,
+					"next": 2,
+					"pageLine": 10,
+					"previous": 1,
+					"startIndex": 0,
+					"totalPage": 2,
+					"totalRow": 20
+				}	
+			},
+			"params": [
+				{
+					"name": "start",
+					"value": ""
+				},
+				{
+					"name": "size",
+					"value": ""
+				},
+				{
+					"name": "modelStr",
+					"value": ""
+				}
+			],
+			"methodName": "queryAll"
+		}
+  ,
+		{
+			"output": {
+				"result": "success",
+			    "data": {
+					"curPage": 1,
+					"data": [
+						{
+					"id": "主键"  ,
+					"receptionId": "领用id"  ,
+					"receptionCode": "领用编号"  ,
+					"destroyCode": "销毁编码"  ,
+					"drugId": "药剂id"  ,
+					"destroyTime": "销毁日期"  ,
+					"destroyNumber": "数量"  ,
+					"manufacturer": "生产厂家"  ,
+					"source": "残渣来源"  ,
+					"destroyType": "销毁方式"  ,
+					"compliance": "是否合规"  ,
+					"remark": "备注"  ,
+					"approveStatus": "审批状态"  ,
+					"status": "状态"  ,
+					"deleteFlag": "删除状态"  ,
+					"companyId": "公司"  ,
+					"createUserid": "创建人"  ,
+					"createDeptid": "创建部门"  ,
+					"createDate": "创建时间"  ,
+					"modifyUserid": "修改人"  ,
+					"modifyDeptid": "修改部门"  ,
+					"modifyDate": "修改时间"  ,
+					"partIn": "参与人"  
+ ,
+					"drugBasic":{
+						"id": "主键" ,
+						"drugType": "药剂类别" ,
+						"drugName": "药剂名称" ,
+						"drugUnit": "计量单位" ,
+						"drugModel": "规格型号" ,
+						"drugNumber": "数量" ,
+						"status": "状态" ,
+						"deleteFlag": "删除状态" ,
+						"companyId": "公司" ,
+						"createUserid": "创建人" ,
+						"createDeptid": "创建部门" ,
+						"createDate": "创建时间" ,
+						"modifyUserid": "修改人" ,
+						"modifyDeptid": "修改部门" ,
+						"modifyDate": "修改时间" 
+					}
+						}
+					],
+					"first": 1,
+					"last": 2,
+					"next": 2,
+					"pageLine": 10,
+					"previous": 1,
+					"startIndex": 0,
+					"totalPage": 2,
+					"totalRow": 20
+				}
+			},
+			"params": [
+				{
+					"name": "start",
+					"value": ""
+				},
+				{
+					"name": "size",
+					"value": ""
+				},
+				{
+					"name": "modelStr",
+					"value": ""
+				}
+			],
+			"methodName": "queryAllInnerJoin"
+		},
+		{
+			"output": {
+			    "result": "success",
+			    "data": {
+					"curPage": 1,
+					"data": [
+						{
+					"id": "主键" ,
+					"receptionId": "领用id" ,
+					"receptionCode": "领用编号" ,
+					"destroyCode": "销毁编码" ,
+					"drugId": "药剂id" ,
+					"destroyTime": "销毁日期" ,
+					"destroyNumber": "数量" ,
+					"manufacturer": "生产厂家" ,
+					"source": "残渣来源" ,
+					"destroyType": "销毁方式" ,
+					"compliance": "是否合规" ,
+					"remark": "备注" ,
+					"approveStatus": "审批状态" ,
+					"status": "状态" ,
+					"deleteFlag": "删除状态" ,
+					"companyId": "公司" ,
+					"createUserid": "创建人" ,
+					"createDeptid": "创建部门" ,
+					"createDate": "创建时间" ,
+					"modifyUserid": "修改人" ,
+					"modifyDeptid": "修改部门" ,
+					"modifyDate": "修改时间" ,
+					"partIn": "参与人" 
+ ,
+					"drugBasic":{
+						"id": "主键" ,
+						"drugType": "药剂类别" ,
+						"drugName": "药剂名称" ,
+						"drugUnit": "计量单位" ,
+						"drugModel": "规格型号" ,
+						"drugNumber": "数量" ,
+						"status": "状态" ,
+						"deleteFlag": "删除状态" ,
+						"companyId": "公司" ,
+						"createUserid": "创建人" ,
+						"createDeptid": "创建部门" ,
+						"createDate": "创建时间" ,
+						"modifyUserid": "修改人" ,
+						"modifyDeptid": "修改部门" ,
+						"modifyDate": "修改时间" 
+					}
+						}
+					],
+					"first": 1,
+					"last": 2,
+					"next": 2,
+					"pageLine": 10,
+					"previous": 1,
+					"startIndex": 0,
+					"totalPage": 2,
+					"totalRow": 20
+					}
+				},
+			"params": [
+				{
+					"name": "start",
+					"value": ""
+				},
+				{
+					"name": "size",
+					"value": ""
+				},
+				{
+					"name": "modelStr",
+					"value": ""
+				}
+			],
+			"methodName": "queryAllLeftJoin"
+		}
+	]
+}
+

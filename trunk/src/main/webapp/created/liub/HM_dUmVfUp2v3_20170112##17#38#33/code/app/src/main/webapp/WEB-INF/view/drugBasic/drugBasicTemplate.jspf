@@ -1,0 +1,81 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<!-- 药剂基本信息表格模版 (列表)-->
+	<textarea id="drugBasicTableTemplateTxt" style="display: none">
+	<![CDATA[
+		{#template MAIN}
+			 <table class="table-form table-bordered table-hover table-ellipsis table-fixed" style="min-width: 1000px">
+				<thead>
+				<tr>
+					<th width="3%" ><input type="checkbox" id="checkAll"></th>
+					<th width="5%">序号</th>
+					<th>药剂类别</th>
+					<th>药剂名称</th>
+					<th>计量单位</th>
+					<th>规格型号</th>
+					<th>数量</th>
+					<th>状态</th>
+					<th>删除状态</th>
+				</tr>
+				</thead>
+				<tbody>
+			<!-- 增加序号定义
+				$P startNum 定义每页开始行号
+				$P index 定义行索引
+				-->
+				{#param name=startNum value=($T.pageNum - 1) * $T.pageSize }
+				{#param name=sumWeigth value=0}
+				{#param name=sumPrice value=0}
+				{#foreach $T.list as row}
+					{#param name=index value=($P.startNum + $T.row$index + 1)}
+						<tr>
+							<td><input type="checkbox" value="{$T.row.id}" index="{$P.index}" name="check"></td>		
+							<td>{$P.index}</td>
+							<td class="text-left" title="{#if $T.row.drugType !=null}{$T.row.drugType}{#/if}">
+								{#if $T.row.drugType !=null}
+									{$T.row.drugType}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.drugName !=null}{$T.row.drugName}{#/if}">
+								{#if $T.row.drugName !=null}
+									{$T.row.drugName}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.drugUnit !=null}{$T.row.drugUnit}{#/if}">
+								{#if $T.row.drugUnit !=null}
+									{$T.row.drugUnit}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.drugModel !=null}{$T.row.drugModel}{#/if}">
+								{#if $T.row.drugModel !=null}
+									{$T.row.drugModel}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.drugNumber !=null}{$T.row.drugNumber}{#/if}">
+								{#if $T.row.drugNumber !=null}
+									{$T.row.drugNumber}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.status !=null}{$T.row.status}{#/if}">
+								{#if $T.row.status !=null}
+									{$T.row.status}
+								{#/if}
+						</td>
+							<td class="text-left" title="{#if $T.row.deleteFlag !=null}{$T.row.deleteFlag}{#/if}">
+								{#if $T.row.deleteFlag !=null}
+									{$T.row.deleteFlag}
+								{#/if}
+						</td>
+					</tr>
+				{#/for}
+					{#if $T.list.length>0}
+					{#else}
+						<tr>    
+							<td colspan=9 class="text-left">无符合条件数据</td>
+						</tr>
+					{#/if}
+				</tbody>
+			</table>
+		{#/template MAIN}
+	]]>
+	</textarea>
+
