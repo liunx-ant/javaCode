@@ -163,6 +163,7 @@
 										</td>
 										<td class="">
 											<select class="required form-control-select" name="objects[${objsIndex.index}].properties[${propertiesIndex.index}].colType" placeholder="请选择" >
+									    		<option <c:if test="${properties.colType=='BIGINT'}">selected</c:if>  value="LONG" >长整数</option>
 									    		<option <c:if test="${properties.colType=='INTEGER'}">selected</c:if>  value="INTEGER" >整数</option>
 									    		<option <c:if test="${properties.colType=='TIMESTAMP'}">selected</c:if>  value="TIMESTAMP" >时间</option>
 									    		<option <c:if test="${properties.colType=='DECIMAL'}">selected</c:if>  value="DECIMAL" >数字</option>
