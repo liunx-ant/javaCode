@@ -165,7 +165,7 @@
 											<select class="required form-control-select" name="objects[${objsIndex.index}].properties[${propertiesIndex.index}].colType" placeholder="请选择" >
 									    		<option <c:if test="${properties.colType=='BIGINT'}">selected</c:if>  value="LONG" >长整数</option>
 									    		<option <c:if test="${properties.colType=='INTEGER'}">selected</c:if>  value="INTEGER" >整数</option>
-									    		<option <c:if test="${properties.colType=='TIMESTAMP'}">selected</c:if>  value="TIMESTAMP" >时间</option>
+									    		<option <c:if test="${properties.colType=='DATETIME'}">selected</c:if>  value="DATETIME" >时间</option>
 									    		<option <c:if test="${properties.colType=='DECIMAL'}">selected</c:if>  value="DECIMAL" >数字</option>
 									    		<option <c:if test="${properties.colType=='VARCHAR'}">selected</c:if>  value="VARCHAR" >字符</option>
 							           	 	</select>
