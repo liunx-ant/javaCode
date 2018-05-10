@@ -1,1 +1,0 @@
-						<input class="<#if property.propertyNew.isMust>required </#if>inputText " <#if property.lenth != ''>maxlength=${property.lenth} </#if>name="<#if ! object.isMain>${object.objectName}.</#if>${property.name}" type="text">

@@ -6,7 +6,7 @@
 <#list objects as object>
 		<!--${object.title} ${object.tableName} column-->
 	<#list object.properties as property>
-		<result column="<#if !object.isMain>${object.objectName}$${property.name}</#if><#if object.isMain>${property.colName}</#if>" jdbcType="${property.colType}" property="<#if !object.isMain>${object.objectName}.</#if>${property.name}" />
+		<result column="<#if !object.isMain>${object.objectName}$${property.name}</#if><#if object.isMain>${property.colName}</#if>" jdbcType="<#if property.colType == 'DATETIME'>TIMESTAMP<#else>${property.colType}</#if>" property="<#if !object.isMain>${object.objectName}.</#if>${property.name}" />
 	</#list>
 </#list>
 	</resultMap>

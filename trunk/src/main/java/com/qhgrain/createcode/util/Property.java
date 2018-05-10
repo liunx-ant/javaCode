@@ -73,12 +73,14 @@ public class Property {
 	}
 	public String getType() {
 	    colType=colType.toUpperCase();
-	    if ("INTEGER".equals(colType)) {
+	    if ("INTEGER".equals(colType) || "TINYINT".equals(colType) ) {
 	        type="Integer";
         }else if("TIMESTAMP".equals(colType)||"DATETIME".equals(colType)) {
             type="Date";
         }else if("DECIMAL".equals(colType)) {
             type="BigDecimal";
+        }else if("BIGINT".equals(colType)) {
+        	type="Long";
         }else{
             type="String";
         }
