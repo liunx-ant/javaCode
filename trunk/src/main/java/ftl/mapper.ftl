@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="${mainObject.apiPackageName}.dao.${mainObject.className}Dao">
+<mapper namespace="${mainObject.daoPackageName}.dao.${mainObject.className}Dao">
 	<!--${mainObject.title} sql-->
- 	<resultMap id="BaseResultMap" type="${mainObject.domainPackageName}.${mainObject.className}Vo">
+ 	<resultMap id="BaseResultMap" type="${mainObject.apiPackageName}.consumer.vo.${mainObject.className}Vo">
 <#list objects as object>
 		<!--${object.title} ${object.tableName} column-->
 	<#list object.properties as property>
@@ -129,7 +129,7 @@
 <#list mainObject.properties as property>
 	<#if  property.isPk>
 		<#if property_has_next>
-		and FIND_IN_SET(${property.colName},${r'#'}{${property.name}})
+		and ${property.colName}=${r'#'}{${property.name}}
 		</#if>
 	</#if>
 </#list>

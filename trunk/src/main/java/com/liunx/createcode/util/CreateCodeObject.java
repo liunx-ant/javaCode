@@ -8,9 +8,17 @@ public class CreateCodeObject {
     private String domainPackageName;
     private String appPackageName;
     private String apiPackageName;
-    private String apiRelativePath;
-    private String appRelativePath;
+    private String daoPackageName;
+    private String servicePackageName;
+    private String providePackageName;
+    
+    
     private String domainRelativePath;
+    private String appRelativePath;
+    private String apiRelativePath;
+    private String daoRelativePath;
+    private String serviceRelativePath;
+    private String provideRelativePath;
     private String className;
     private String tableName;
     private String title;
@@ -91,7 +99,56 @@ public class CreateCodeObject {
         this.domainRelativePath = domainRelativePath;
     }
 
-    public String getTableName() {
+    
+    public String getDaoPackageName() {
+		return daoPackageName;
+	}
+
+	public void setDaoPackageName(String daoPackageName) {
+		this.daoPackageName = daoPackageName;
+	}
+
+	public String getServicePackageName() {
+		return servicePackageName;
+	}
+
+	public void setServicePackageName(String servicePackageName) {
+		this.servicePackageName = servicePackageName;
+	}
+
+	public String getProvidePackageName() {
+		return providePackageName;
+	}
+
+	public void setProvidePackageName(String providePackageName) {
+		this.providePackageName = providePackageName;
+	}
+
+	public String getDaoRelativePath() {
+		return daoPackageName.replaceAll("\\.", "/");
+	}
+
+	public void setDaoRelativePath(String daoRelativePath) {
+		this.daoRelativePath = daoRelativePath;
+	}
+
+	public String getServiceRelativePath() {
+		return servicePackageName.replaceAll("\\.", "/");
+	}
+
+	public void setServiceRelativePath(String serviceRelativePath) {
+		this.serviceRelativePath = serviceRelativePath;
+	}
+
+	public String getProvideRelativePath() {
+		return providePackageName.replaceAll("\\.", "/");
+	}
+
+	public void setProvideRelativePath(String provideRelativePath) {
+		this.provideRelativePath = provideRelativePath;
+	}
+
+	public String getTableName() {
         return tableName;
     }
 

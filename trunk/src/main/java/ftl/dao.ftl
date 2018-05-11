@@ -1,11 +1,11 @@
-package ${mainObject.apiPackageName}.dao;
+package ${mainObject.daoPackageName}.dao;
 
 import java.util.List;
 import com.foriseland.fjf.annotation.MyBatisRepository;
 import com.foriseland.fjf.base.IBaseMapper;
-import ${mainObject.domainPackageName}.${mainObject.className};
-import ${mainObject.domainPackageName}.${mainObject.className}Vo;
-import ${projStructurePath}.util.dao.BaseDao;
+import ${mainObject.domainPackageName}.domain.${mainObject.className};
+import ${mainObject.apiPackageName}.consumer.dto.${mainObject.className}Dto;
+import ${mainObject.apiPackageName}.consumer.vo.${mainObject.className}Vo;
 
  /**
   * 
@@ -26,7 +26,7 @@ public interface ${mainObject.className}Dao extends IBaseMapper<${mainObject.cla
 	 * @author ${author}
 	 * @date ${nowDate}
 	 */
-	public int delete(E entity);
+	public int delete(${mainObject.className} entity);
 	
 	/**
 	 * 根据多个参数进行查询结果集返回行
@@ -35,7 +35,7 @@ public interface ${mainObject.className}Dao extends IBaseMapper<${mainObject.cla
 	 * @author ${author}
 	 * @date ${nowDate}
 	 */
-	public E  getInfo(E entity);
+	public ${mainObject.className}  getInfo(${mainObject.className} entity);
 	
 		/**
 	 *  分页
@@ -44,5 +44,5 @@ public interface ${mainObject.className}Dao extends IBaseMapper<${mainObject.cla
 	 * @author ${author}
 	 * @date ${nowDate}
 	 */
-	public List<${mainObject.className}Vo> getAll(E entity);
+	public List<${mainObject.className}Vo> getAll(${mainObject.className}Dto dto);
 }

@@ -11,13 +11,20 @@ import com.liunx.common.util.PathUtil;
  */
 public class Config {
 	// 包的默认配置
-	private String apiPackageNamePrefix = "com.qhgrain.api.whou";
-	private String appPackageNamePrefix = "com.qhgrain.app.whou";
-	private String domainPackageNamePrefix = "com.qhgrain.api.whou.domain";
+	private String apiPackageNamePrefix = "com.liunx.api.whou";
+	private String appPackageNamePrefix = "com.liunx.app.whou";
+	private String domainPackageNamePrefix = "com.liunx.api.whou.domain";
+	private String daoPackageNamePrefix = "com.liunx.api.whou.domain";
+	private String servicePackageNamePrefix = "com.liunx.api.whou.domain";
+	private String providePackageNamePrefix = "com.liunx.api.whou.domain";
+	
 	//路径配置
 	private String apiProjectPath = "E:/yihe/whou/maven.1468831208129/trunk";
 	private String appProjectPath = "E:/yihe/whou/maven.1469003107214/trunk";
 	private String domainProjectPath = "E:/yihe/whou/maven.1462430664164/trunk";
+	private String daoProjectPath = "E:/yihe/whou/maven.1462430664164/trunk";
+	private String serviceProjectPath = "E:/yihe/whou/maven.1462430664164/trunk";
+	private String provideProjectPath = "E:/yihe/whou/maven.1462430664164/trunk";
 	
 	private String ftlFolderPath = PathUtil.getClasspath() + "ftl";
 	//xml生成路径 
@@ -101,5 +108,41 @@ public class Config {
     public void setResourcesFolderRootPath(String resourcesFolderRootPath) {
         this.resourcesFolderRootPath = resourcesFolderRootPath.trim();
     }
+	public String getDaoPackageNamePrefix() {
+		return daoPackageNamePrefix;
+	}
+	public void setDaoPackageNamePrefix(String daoPackageNamePrefix) {
+		this.daoPackageNamePrefix = daoPackageNamePrefix;
+	}
+	public String getServicePackageNamePrefix() {
+		return servicePackageNamePrefix;
+	}
+	public void setServicePackageNamePrefix(String servicePackageNamePrefix) {
+		this.servicePackageNamePrefix = servicePackageNamePrefix;
+	}
+	public String getProvidePackageNamePrefix() {
+		return providePackageNamePrefix;
+	}
+	public void setProvidePackageNamePrefix(String providePackageNamePrefix) {
+		this.providePackageNamePrefix = providePackageNamePrefix;
+	}
+	public String getDaoProjectPath() {
+		return daoProjectPath;
+	}
+	public void setDaoProjectPath(String daoProjectPath) {
+		this.daoProjectPath = daoProjectPath;
+	}
+	public String getServiceProjectPath() {
+		return serviceProjectPath;
+	}
+	public void setServiceProjectPath(String serviceProjectPath) {
+		this.serviceProjectPath = serviceProjectPath;
+	}
+	public String getProvideProjectPath() {
+		return provideProjectPath;
+	}
+	public void setProvideProjectPath(String provideProjectPath) {
+		this.provideProjectPath = provideProjectPath;
+	}
 	
 }

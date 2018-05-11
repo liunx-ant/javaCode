@@ -1,4 +1,4 @@
-package ${mainObject.apiPackageName}.service;
+package ${mainObject.servicePackageName}.service.impl;
 
 import java.util.Date;
 import java.util.List;
@@ -11,11 +11,11 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
 <#list objects as object>
-import ${mainObject.domainPackageName}. ${object.className};
-import ${mainObject.domainPackageName}. ${object.className}Dto;
-import ${mainObject.domainPackageName}. ${object.className}Vo;
+import ${mainObject.domainPackageName}.domain.${object.className};
+import ${mainObject.apiPackageName}.consumer.dto.${object.className}Dto;
+import ${mainObject.apiPackageName}.consumer.vo.${object.className}Vo;
 </#list>   
-import ${mainObject.apiPackageName}.service.${mainObject.className}Service;
+import ${mainObject.servicePackageName}.service.I${mainObject.className}Service;
 <#list objects as object>
 import ${mainObject.apiPackageName}.dao.${object.className}Dao;
 </#list> 
@@ -29,15 +29,12 @@ import ${mainObject.apiPackageName}.dao.${object.className}Dao;
   * Copyright ${copyright}
  */
 @Service
-public class ${mainObject.className}ServiceImpl implements ${mainObject.className}Service {
+public class ${mainObject.className}ServiceImpl implements I${mainObject.className}Service {
     
 <#list objects as object>
 	//${object.title}Dao
     @Autowired
     private ${object.className}Dao ${object.objectName}Dao;
-    //${object.title}Service
-    @Autowired
-    private ${object.className}Service ${object.objectName}Service;
 </#list>    
 
 	/**
@@ -49,8 +46,8 @@ public class ${mainObject.className}ServiceImpl implements ${mainObject.classNam
 	 */
 	@Override
 	public int save(${mainObject.className} ${mainObject.objectName}){
-		${mainObject.objectName}.setCreateDate(new Date());
-		${mainObject.objectName}Dao.insert(${mainObject.objectName});
+		${mainObject.objectName}.setCreated(new Date());
+		${mainObject.objectName}Dao.save(${mainObject.objectName});
 		<#include "/service/createRelation.ftl"/>
 		
 		return 1;
@@ -65,8 +62,8 @@ public class ${mainObject.className}ServiceImpl implements ${mainObject.classNam
 	 */
 	@Override
 	public int update(${mainObject.className} ${mainObject.objectName}){
-		${mainObject.objectName}.setModifyDate(new Date());
-		int i =${mainObject.objectName}Dao.updateSelective(${mainObject.objectName});
+		${mainObject.objectName}.setLastUpd(new Date());
+		int i =${mainObject.objectName}Dao.updateByIdSelective(${mainObject.objectName});
 		
 <#list mainObject.objectRels as objectRel>
 	<#if objectRel.relType == 'ONETOMANY'>
@@ -86,7 +83,7 @@ public class ${mainObject.className}ServiceImpl implements ${mainObject.classNam
 	 * @date ${nowDate}
 	 */
 	@Override
-	public ${mainObject.className} queryById(String id){
+	public ${mainObject.className} queryById(Long id){
 		${mainObject.className} ${mainObject.objectName} = new ${mainObject.className}();
 		${mainObject.objectName}.setId(id);
 		${mainObject.objectName}=${mainObject.objectName}Dao.getInfo(${mainObject.objectName});
@@ -133,7 +130,7 @@ public class ${mainObject.className}ServiceImpl implements ${mainObject.classNam
      
         PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
         List<${mainObject.className}Vo> list = ${mainObject.objectName}Dao.getAll(${mainObject.objectName}Dto);
-        return new Page<${mainObject.className}Vo>(list);
+        return (Page<${mainObject.className}Vo>)list;
     }
     
 <#if (mainObject.objectRels?size>0) >  
@@ -153,7 +150,7 @@ public class ${mainObject.className}ServiceImpl implements ${mainObject.classNam
 	        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
       	}
       	List<${mainObject.className}Vo> list = ${mainObject.objectName}Dao.getAllInnerJoin(${mainObject.objectName}Dto);
-        return new Page<${mainObject.className}Vo>(list);
+        return (Page<${mainObject.className}Vo>)list;
     }
     
 	/**
@@ -173,7 +170,7 @@ public class ${mainObject.className}ServiceImpl implements ${mainObject.classNam
 	        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
       	}
       	List<${mainObject.className}Vo> list = ${mainObject.objectName}Dao.getAllLeftJoin(${mainObject.objectName}Dto);
-        return new Page<${mainObject.className}Vo>(list);
+        return (Page<${mainObject.className}Vo>)list;
     }
 </#if>    
 

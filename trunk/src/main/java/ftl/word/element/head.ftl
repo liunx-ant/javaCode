@@ -1243,7 +1243,7 @@
 									<w:rStyle w:val="a9" />
 									<w:noProof />
 								</w:rPr>
-								<w:t>4.1com.qhgrain.api.whou.goodsallocation.IAllocationService</w:t>
+								<w:t>4.1com.liunx.api.whou.goodsallocation.IAllocationService</w:t>
 							</w:r>
 							<w:r>
 								<w:rPr>

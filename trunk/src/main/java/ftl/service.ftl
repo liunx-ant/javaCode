@@ -1,11 +1,11 @@
-package  ${mainObject.apiPackageName}.service;
+package  ${mainObject.servicePackageName}.service;
 
 import java.util.List;
 import com.github.pagehelper.Page;
 <#list objects as object>
-import ${mainObject.domainPackageName}. ${object.className};
-import ${mainObject.domainPackageName}. ${object.className}Dto;
-import ${mainObject.domainPackageName}. ${object.className}Vo;
+import ${mainObject.domainPackageName}.domain.${object.className};
+import ${mainObject.apiPackageName}.consumer.dto.${object.className}Dto;
+import ${mainObject.apiPackageName}.consumer.vo.${object.className}Vo;
 </#list>   
 
 /**
@@ -16,7 +16,7 @@ import ${mainObject.domainPackageName}. ${object.className}Vo;
   * @date ${nowDate}
   * Copyright ${copyright}
  */
-public interface ${mainObject.className}Service {
+public interface I${mainObject.className}Service {
     
 	/**
 	 * 新增${mainObject.title}
@@ -43,7 +43,7 @@ public interface ${mainObject.className}Service {
 	 * @author ${author}
 	 * @date ${nowDate}
 	 */
-	public ${mainObject.className} queryById(String id);
+	public ${mainObject.className} queryById(Long id);
 	
 	/**
 	 * 根据${mainObject.title}查询${mainObject.title}
@@ -55,7 +55,7 @@ public interface ${mainObject.className}Service {
 	public ${mainObject.className} queryByInfo(${mainObject.className} ${mainObject.objectName});
 	
 	/**
-	 * 分页查询${mainObject.title}(单表)
+	 * 查询${mainObject.title}(单表)
 	 * @param ${mainObject.title}
 	 * @return ${mainObject.title}集合
 	 * @author ${author}

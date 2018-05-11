@@ -25,7 +25,7 @@
 		<property name="globalSessionTimeout" value="100000000"/>
 	</bean>
 	
-	<bean id="myRealm" class="com.qhgrain.demo.authz.UserRealm" >
+	<bean id="myRealm" class="com.liunx.demo.authz.UserRealm" >
 	    <property name="name" value="myRealm"/>
 	    <!-- 
         <property name="dataSource" ref="mysqlDataSource"/>
@@ -58,7 +58,7 @@
 	</bean>	
 	
 	
-	<bean id="loginAuth" class="com.qhgrain.demo.authz.DbUserAuthFilter"/>
+	<bean id="loginAuth" class="com.liunx.demo.authz.DbUserAuthFilter"/>
 	 
 	<!-- 用户授权信息Cache, 采用EhCache -->
 <!-- 	<bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager"/> -->

@@ -8,6 +8,9 @@
 		<apiPackageName>${object.apiPackageName}</apiPackageName>
 		<appPackageName>${object.appPackageName}</appPackageName>
 		<domainPackageName>${object.domainPackageName}</domainPackageName>
+		<daoPackageName>${object.daoPackageName}</daoPackageName>
+		<servicePackageName>${object.servicePackageName}</servicePackageName>
+		<providePackageName>${object.providePackageName}</providePackageName>
 		<className>${object.className}</className>
 		<tableName>${object.tableName}</tableName>
 		<title>${object.title}</title>

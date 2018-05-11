@@ -113,26 +113,36 @@ public class CreateCodeService {
             projStructurePath.put("projStructurePath",projStructurePathStr.substring(0,projStructurePathStr.length()-1));
             rootMap.putAll(projStructurePath);
             
-            serviceImplPath=config.getApiProjectPath()+config.getJavaFolderRootPath() + createCodeObjects.getMainObject().getApiRelativePath() + g+"service"+g;
+            String baseStr = config.getJavaFolderRootPath();
+            for(String path:config.getDomainPackageNamePrefix().split("\\.")) {
+            	baseStr =baseStr+g+path;
+            }
+            String domain = config.getDomainProjectPath()+".domain" +baseStr;
+            String dao = config.getDaoProjectPath()+".dao"+baseStr;
+            String service = config.getServiceProjectPath()+".service"+baseStr;
+            String provide = config.getProvideProjectPath()+".provide"+baseStr;
+            String controller = config.getAppProjectPath()+".controller"+baseStr;
+            
+            String api = config.getApiProjectPath()+baseStr+g+"consumer"+g ;
            
             //配置文件
-            Freemarker.printFile("api_envProperties.ftl", dbMap, "env.properties", config.getApiProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("api_springSystem.ftl",projStructurePath, "spring-system.xml", config.getApiProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("app_envProperties.ftl", rootMap, "env.properties", config.getAppProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("app_springSystem.ftl",projStructurePath, "spring-system.xml", config.getAppProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("api_envProperties.ftl", dbMap, "env.properties", config.getApiProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("api_springSystem.ftl",projStructurePath, "spring-system.xml", config.getApiProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("app_envProperties.ftl", rootMap, "env.properties", config.getAppProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("app_springSystem.ftl",projStructurePath, "spring-system.xml", config.getAppProjectPath()+g+"src"+g+"main"+g+"webapp"+g+"WEB-INF"+g+"config", config.getFtlFolderPath()+g+"common");
             //公用文件 app
-            Freemarker.printFile("appController.ftl", rootMap, "AppController.java",config.getAppProjectPath()+config.getJavaFolderRootPath() + createCodeObjects.getMainObject().getAppRelativePath() + g+"controller"+g, config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("serviceUrl.ftl", rootMap, "ServiceUrl.java", config.getAppProjectPath()+config.getJavaFolderRootPath() + ss+"util"+g, config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("appController.ftl", rootMap, "AppController.java",config.getAppProjectPath()+config.getJavaFolderRootPath() + createCodeObjects.getMainObject().getAppRelativePath() + g+"controller"+g, config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("serviceUrl.ftl", rootMap, "ServiceUrl.java", config.getAppProjectPath()+config.getJavaFolderRootPath() + ss+"util"+g, config.getFtlFolderPath()+g+"common");
             //公用文件 common
-            Freemarker.printFile("UUIDUtil.ftl", rootMap,"UUIDUtil.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("constants.ftl", rootMap,"Constants.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("propertiesUtil.ftl", rootMap,"PropertiesUtil.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("resultMessage.ftl", rootMap,"ResultMessage.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("UUIDUtil.ftl", rootMap,"UUIDUtil.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("constants.ftl", rootMap,"Constants.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("propertiesUtil.ftl", rootMap,"PropertiesUtil.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("resultMessage.ftl", rootMap,"ResultMessage.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"common", config.getFtlFolderPath()+g+"common");
             
-            Freemarker.printFile("commonController.ftl", rootMap,"Controller.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"web", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("baseDao.ftl", rootMap,"BaseDao.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"dao", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("model.ftl", rootMap,"Model.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"domain", config.getFtlFolderPath()+g+"common");
-            Freemarker.printFile("ognl.ftl", rootMap,"Ognl.java",config.getDomainProjectPath()+config.getJavaFolderRootPath(), config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("commonController.ftl", rootMap,"Controller.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"web", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("baseDao.ftl", rootMap,"BaseDao.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"dao", config.getFtlFolderPath()+g+"common");
+//            Freemarker.printFile("model.ftl", rootMap,"Model.java",config.getDomainProjectPath()+config.getJavaFolderRootPath() + projStructurePath.get("projStructurePath").toString().replaceAll("\\.","\\"+g)+g+"util"+g+"domain", config.getFtlFolderPath()+g+"common");
+            Freemarker.printFile("ognl.ftl", rootMap,"Ognl.java", config.getDaoProjectPath()+".dao"+config.getJavaFolderRootPath(), config.getFtlFolderPath()+g+"common");
             
             
             for (CreateCodeObject createCodeObject : createCodeObjects.getObjects()) {
@@ -140,42 +150,49 @@ public class CreateCodeService {
                     serviceImplNames.add(createCodeObject.getClassName() + "ServiceImpl");
                     
                     //公用文件 common
-                    Freemarker.printFile("serviceDoc.ftl", rootMap,createCodeObject.getObjectName()+"ServiceDoc.text",config.getDomainProjectPath()+g+"doc"+g, config.getFtlFolderPath()+g+"common");
+//                    Freemarker.printFile("serviceDoc.ftl", rootMap,createCodeObject.getObjectName()+"ServiceDoc.text",config.getDomainProjectPath()+g+"doc"+g, config.getFtlFolderPath()+g+"common");
                     //jsp
-                    Freemarker.printFile("jsp_home.ftl", rootMap, "home.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
-                    Freemarker.printFile("jsp_new.ftl", rootMap, "new.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
-                    Freemarker.printFile("jsp_edit.ftl", rootMap, "edit.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
-                    Freemarker.printFile("jsp_view.ftl", rootMap, "view.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
-                    Freemarker.printFile("table.ftl", rootMap, createCodeObject.getObjectName()+"Template.jspf", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath()+"/form/home");
+//                    Freemarker.printFile("jsp_home.ftl", rootMap, "home.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
+//                    Freemarker.printFile("jsp_new.ftl", rootMap, "new.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
+//                    Freemarker.printFile("jsp_edit.ftl", rootMap, "edit.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
+//                    Freemarker.printFile("jsp_view.ftl", rootMap, "view.jsp", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath());
+//                    Freemarker.printFile("table.ftl", rootMap, createCodeObject.getObjectName()+"Template.jspf", config.getAppProjectPath()+config.getJspFolderRootPath() + createCodeObject.getObjectName() + g, config.getFtlFolderPath()+"/form/home");
                     //js
-                    Freemarker.printFile("business.ftl", rootMap,createCodeObject.getObjectName()+"Business.js",config.getAppProjectPath()+ config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath());
-                    Freemarker.printFile("initList.ftl", rootMap,createCodeObject.getObjectName()+"List.js", config.getAppProjectPath()+config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
-                    Freemarker.printFile("initInfo.ftl", rootMap,createCodeObject.getObjectName()+"Info.js",config.getAppProjectPath()+ config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
-                    Freemarker.printFile("initEdit.ftl", rootMap,createCodeObject.getObjectName()+"Edit.js",config.getAppProjectPath()+ config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
-                    Freemarker.printFile("initAdd.ftl", rootMap,createCodeObject.getObjectName()+"Add.js", config.getAppProjectPath()+config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
+//                    Freemarker.printFile("business.ftl", rootMap,createCodeObject.getObjectName()+"Business.js",config.getAppProjectPath()+ config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath());
+//                    Freemarker.printFile("initList.ftl", rootMap,createCodeObject.getObjectName()+"List.js", config.getAppProjectPath()+config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
+//                    Freemarker.printFile("initInfo.ftl", rootMap,createCodeObject.getObjectName()+"Info.js",config.getAppProjectPath()+ config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
+//                    Freemarker.printFile("initEdit.ftl", rootMap,createCodeObject.getObjectName()+"Edit.js",config.getAppProjectPath()+ config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
+//                    Freemarker.printFile("initAdd.ftl", rootMap,createCodeObject.getObjectName()+"Add.js", config.getAppProjectPath()+config.getJsFolderRootPath() + g+"js"+g+createCodeObject.getObjectName()+g+"controller"+g, config.getFtlFolderPath()+g+"init"+g+"page");
                     //java
-                    Freemarker.printFile("controller.ftl", rootMap, createCodeObject.getClassName() + "Controller.java", config.getAppProjectPath()+config.getJavaFolderRootPath() + createCodeObject.getAppRelativePath() + g+"controller"+g, config.getFtlFolderPath());
-                    Freemarker.printFile("service.ftl", rootMap, createCodeObject.getClassName() + "Service.java", config.getDomainProjectPath()+config.getJavaFolderRootPath() + createCodeObject.getApiRelativePath() + g+"service"+g, config.getFtlFolderPath());
-                    Freemarker.printFile("serviceImpl.ftl", rootMap, createCodeObject.getClassName() + "ServiceImpl.java", serviceImplPath, config.getFtlFolderPath());
-                    Freemarker.printFile("dao.ftl", rootMap, createCodeObject.getClassName() + "Dao.java", config.getApiProjectPath()+config.getJavaFolderRootPath() + createCodeObject.getApiRelativePath() + g+"dao"+g, config.getFtlFolderPath());
+//                    Freemarker.printFile("controller.ftl", rootMap, createCodeObject.getClassName() + "Controller.java", config.getAppProjectPath()+config.getJavaFolderRootPath() + createCodeObject.getAppRelativePath() + g+"controller"+g, config.getFtlFolderPath());
+
+                    Freemarker.printFile("service.ftl", rootMap, "I"+createCodeObject.getClassName() + "Service.java", service+ g+"service"+g, config.getFtlFolderPath());
+                    Freemarker.printFile("serviceImpl.ftl", rootMap, createCodeObject.getClassName() + "ServiceImpl.java", service+g+"service"+g+"impl", config.getFtlFolderPath());
                     //实体
-                    Freemarker.printFile("dto.ftl", rootMap, createCodeObject.getClassName() + ".java", config.getDomainProjectPath()+config.getJavaFolderRootPath() + createCodeObject.getDomainRelativePath() +g, config.getFtlFolderPath());
+                    Freemarker.printFile("entity.ftl", rootMap, createCodeObject.getClassName() + ".java", domain+g+"domain", config.getFtlFolderPath());
+                    
+                    Freemarker.printFile("provide.ftl", rootMap, createCodeObject.getClassName() + "Provide.java", provide+g+"provide"+g, config.getFtlFolderPath());
+
+                    Freemarker.printFile("api.ftl", rootMap, "I"+createCodeObject.getClassName() + "Api.java",  api+g+"api", config.getFtlFolderPath());
+                    Freemarker.printFile("vo.ftl", rootMap, createCodeObject.getClassName() + "Vo.java", api+g+"vo", config.getFtlFolderPath());
+                    Freemarker.printFile("dto.ftl", rootMap, createCodeObject.getClassName() + "Dto.java",api +g+"dto", config.getFtlFolderPath());
                     //sql
-                    Freemarker.printFile("mapper.ftl", rootMap, createCodeObject.getClassName() + "Mapper.xml", config.getApiProjectPath()+config.getResourcesFolderRootPath() + g+"mapper"+g, config.getFtlFolderPath());
+                    Freemarker.printFile("dao.ftl", rootMap, createCodeObject.getClassName() + "Dao.java", dao + g+"dao"+g, config.getFtlFolderPath());
+                    Freemarker.printFile("mapper.ftl", rootMap, createCodeObject.getClassName() + "Mapper.xml", dao + g+"mappers"+g, config.getFtlFolderPath());
                 }
             }
             System.out.println(createCodeObjects.getMainObject().getTitle()+"完成!");
             System.out.println();
         }
         
-        System.out.println("生成RESTfulApplication...");
-        Map<String,Object> tables=new HashMap<String,Object>();
-        tables.put("applicationName",rootMap.get("applicationName"));
-        tables.put("apiPackageNamePrefix",config.getApiPackageNamePrefix());
-        tables.put("serviceImplNames", serviceImplNames);
-        tables.put("servicePath", (createCodeObjectsList.get(0).getMainObject().getApiRelativePath() + g+"service"+g).replaceAll("\\\\",".").replaceAll("/","."));
-        Freemarker.printFile("RESTfulApplication.ftl", tables, "RESTfulApplication.java", config.getApiProjectPath()+config.getJavaFolderRootPath()+ config.getApiPackageNamePrefix().replace(".", File.separator), config.getFtlFolderPath()+g+"common");
-        System.out.println("生成RESTfulApplication完成");
+//        System.out.println("生成RESTfulApplication...");
+//        Map<String,Object> tables=new HashMap<String,Object>();
+//        tables.put("applicationName",rootMap.get("applicationName"));
+//        tables.put("apiPackageNamePrefix",config.getApiPackageNamePrefix());
+//        tables.put("serviceImplNames", serviceImplNames);
+//        tables.put("servicePath", (createCodeObjectsList.get(0).getMainObject().getApiRelativePath() + g+"service"+g).replaceAll("\\\\",".").replaceAll("/","."));
+//        Freemarker.printFile("RESTfulApplication.ftl", tables, "RESTfulApplication.java", config.getApiProjectPath()+config.getJavaFolderRootPath()+ config.getApiPackageNamePrefix().replace(".", File.separator), config.getFtlFolderPath()+g+"common");
+//        System.out.println("生成RESTfulApplication完成");
     }
 
 
@@ -381,6 +398,9 @@ public class CreateCodeService {
         objectCreateInfo.setAppPackageName(objectElement.element("appPackageName").getText());
         objectCreateInfo.setApiPackageName(objectElement.element("apiPackageName").getText());
         objectCreateInfo.setDomainPackageName(objectElement.element("domainPackageName").getText());
+        objectCreateInfo.setDaoPackageName(objectElement.element("daoPackageName").getText());
+        objectCreateInfo.setServicePackageName(objectElement.element("servicePackageName").getText());
+        objectCreateInfo.setProvidePackageName(objectElement.element("providePackageName").getText());
         objectCreateInfo.setTableName(objectElement.element("tableName").getText());
         objectCreateInfo.setTitle(objectElement.element("title").getText());
         objectCreateInfo.setIsMain(false);

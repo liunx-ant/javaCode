@@ -111,9 +111,12 @@ public class CreateXmlService {
 		CreateCodeObjects createCodeObjects = new CreateCodeObjects();
 		List<CreateCodeObject> objects = new ArrayList<CreateCodeObject>();
 		CreateCodeObject createCodeObject = new CreateCodeObject();
-		createCodeObject.setApiPackageName(config.getApiPackageNamePrefix() + "." + CreateCodeUtil.getModuleNameByTableName(tableName));
-		createCodeObject.setAppPackageName(config.getAppPackageNamePrefix() + "." + CreateCodeUtil.getModuleNameByTableName(tableName));
-		createCodeObject.setDomainPackageName(config.getDomainPackageNamePrefix() + "." + CreateCodeUtil.getModuleNameByTableName(tableName));
+		createCodeObject.setApiPackageName(config.getApiPackageNamePrefix());
+		createCodeObject.setAppPackageName(config.getAppPackageNamePrefix());
+		createCodeObject.setDomainPackageName(config.getDomainPackageNamePrefix());
+		createCodeObject.setDaoPackageName(config.getDaoPackageNamePrefix());
+		createCodeObject.setServicePackageName(config.getServicePackageNamePrefix());
+		createCodeObject.setProvidePackageName(config.getProvidePackageNamePrefix());
 		createCodeObject.setTitle(getTableComment(tableName,dbConfig));
 		createCodeObject.setClassName(CreateCodeUtil.tableNameToObjectClassName(tableName));
 		createCodeObject.setIsMain(true);

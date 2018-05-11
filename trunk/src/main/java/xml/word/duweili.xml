@@ -3,21 +3,21 @@
 		<serviceName>智慧粮库-客商管理服务</serviceName>
 		<projectCode>apiwhoucustom</projectCode>
 		
-		<serviceFilePath>E:\project\whouCustomerManageService\src\main\java\com\qhgrain\api\whou\customerManage</serviceFilePath>
-		<serviceFilePath>E:\project\whouCustomerManageService\src\main\java\com\qhgrain\api\whou\customerManage</serviceFilePath>
+		<serviceFilePath>E:\project\whouCustomerManageService\src\main\java\com\liunx\api\whou\customerManage</serviceFilePath>
+		<serviceFilePath>E:\project\whouCustomerManageService\src\main\java\com\liunx\api\whou\customerManage</serviceFilePath>
 		
-		<daoFilePath>E:\project\whouCustomerManageService\src\main\java\com\qhgrain\api\whou\customerManage</daoFilePath>
-		<daoFilePath>E:\project\whouCustomerManageService\src\main\java\com\qhgrain\api\whou\customerManage</daoFilePath>
+		<daoFilePath>E:\project\whouCustomerManageService\src\main\java\com\liunx\api\whou\customerManage</daoFilePath>
+		<daoFilePath>E:\project\whouCustomerManageService\src\main\java\com\liunx\api\whou\customerManage</daoFilePath>
 		
-		<entityFilePath>E:\project\whouBaseServiceAPI\src\main\java\com\qhgrain\api\whou\domain\customer</entityFilePath>
-		<entityFilePath>E:\project\whouBaseServiceAPI\src\main\java\com\qhgrain\api\whou\domain\customer</entityFilePath>
+		<entityFilePath>E:\project\whouBaseServiceAPI\src\main\java\com\liunx\api\whou\domain\customer</entityFilePath>
+		<entityFilePath>E:\project\whouBaseServiceAPI\src\main\java\com\liunx\api\whou\domain\customer</entityFilePath>
 	</api>
 	<app>
 		<appName>智慧粮库-客商管理</appName>
 		<projectCode>appwhoucustom</projectCode>
 		
-		<controllerFilePath>E:\project\whouCustomerManagerApp\src\main\java\com\qhgrain\app\whou\customerManage</controllerFilePath>
-		<controllerFilePath>E:\project\whouCustomerManagerApp\src\main\java\com\qhgrain\app\whou\customerManage</controllerFilePath>
+		<controllerFilePath>E:\project\whouCustomerManagerApp\src\main\java\com\liunx\app\whou\customerManage</controllerFilePath>
+		<controllerFilePath>E:\project\whouCustomerManagerApp\src\main\java\com\liunx\app\whou\customerManage</controllerFilePath>
 		
 		
 		<jsFilePath>E:\project\whouCustomerManagerApp\src\main\webapp\js\customer</jsFilePath>

@@ -1,11 +1,11 @@
-package ${mainObject.domainPackageName};
+package ${mainObject.apiPackageName}.consumer.dto;
 
-import ${projStructurePath}.util.domain.Model;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 <#list relObjects as object>
-import ${mainObject.domainPackageName}.${object.className};
+import ${mainObject.apiPackageName}.consumer.${object.className}Dto;
 </#list>
 
 /**
@@ -16,7 +16,7 @@ import ${mainObject.domainPackageName}.${object.className};
   * @date ${nowDate}
   * Copyright ${copyright}
  */
-public class ${mainObject.className} extends Model{
+public class ${mainObject.className}Dto implements Serializable {
     
  	/**
      * 序列
@@ -81,19 +81,19 @@ public class ${mainObject.className} extends Model{
     
 </#list>
 <#list relObjects as object>
-	public ${object.className} get${object.className}() {
+	public ${object.className}Dto get${object.className}() {
         return ${object.objectName};
     }
 
-    public void set${object.className}(${object.className} ${object.objectName}) {
+    public void set${object.className}(${object.className}Dto ${object.objectName}) {
         this.${object.objectName} = ${object.objectName}; 
     }
     
-	public List<${object.className}> get${object.className}List() {
+	public List<${object.className}Dto> get${object.className}List() {
         return ${object.objectName}List;
     }
 
-    public void set${object.className}List(List<${object.className}> ${object.objectName}List) {
+    public void set${object.className}List(List<${object.className}Dto> ${object.objectName}List) {
         this.${object.objectName}List = ${object.objectName}List; 
     }
 </#list>

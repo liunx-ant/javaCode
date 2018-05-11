@@ -106,23 +106,23 @@
 				</ul>
 				<ul class="w100">	
 					<li>
-					    <label class="ser-label"><em class="text-red mr5">*</em>实体类项目结构：</label>
+					    <label class="ser-label"><em class="text-red mr5">*</em>项目结构路径：</label>
 					    <div class="form-content">
 							<input class=" inputText required" name="config.domainPackageNamePrefix" value="${user.configInformation.config.domainPackageNamePrefix}" type="text">
 					    </div>
 					</li>
-					<li>
-					    <label class="ser-label"><em class="text-red mr5">*</em>service项目结构：</label>
-					    <div class="form-content">
-							<input class=" inputText required" name="config.apiPackageNamePrefix" value="${user.configInformation.config.apiPackageNamePrefix}" type="text">
-					    </div>
-					</li>
-					<li>
-					    <label class="ser-label"><em class="text-red mr5">*</em>app项目结构：</label>
-					    <div class="form-content">
-							<input class=" inputText required" name="config.appPackageNamePrefix" value="${user.configInformation.config.appPackageNamePrefix}" type="text">
-					    </div>
-					</li>
+<!-- 					<li> -->
+<!-- 					    <label class="ser-label"><em class="text-red mr5">*</em>service项目结构：</label> -->
+<!-- 					    <div class="form-content"> -->
+<%-- 							<input class=" inputText required" name="config.apiPackageNamePrefix" value="${user.configInformation.config.apiPackageNamePrefix}" type="text"> --%>
+<!-- 					    </div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 					    <label class="ser-label"><em class="text-red mr5">*</em>app项目结构：</label> -->
+<!-- 					    <div class="form-content"> -->
+<%-- 							<input class=" inputText required" name="config.appPackageNamePrefix" value="${user.configInformation.config.appPackageNamePrefix}" type="text"> --%>
+<!-- 					    </div> -->
+<!-- 					</li> -->
 				</ul>
 		</form>
 		<ul>
