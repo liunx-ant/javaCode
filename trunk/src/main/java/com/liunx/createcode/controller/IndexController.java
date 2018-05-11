@@ -1,4 +1,4 @@
-package com.liunx.createcode.Controller;
+package com.liunx.createcode.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -126,12 +126,20 @@ public class IndexController{
             Config config=user.getConfigInformation().getConfig();
             String codePath=config.getXmlFolderRootPath()+File.separatorChar+"code";
             if(!isDevp){//如果是不是开发,写在项目容器下面
-                String apiPath=codePath+File.separatorChar+"api";
-                String appPath=codePath+File.separatorChar+"app";
-                String domainPath=codePath+File.separatorChar+"domain";
+            	String proNameMain = config.getDomainPackageNamePrefix().split("\\.")[(config.getDomainPackageNamePrefix().split("\\.").length-1)];
+                String apiPath=codePath+File.separatorChar+"fas-engine-api"+File.separator+"fsoa-engine-api";
+                String appPath=codePath+File.separatorChar+"fas-"+proNameMain+File.separator+"fas."+proNameMain;
+                String domainPath=codePath+File.separatorChar+"fas-"+proNameMain+File.separator+"fas."+proNameMain;
+
+                String daoPath=codePath+File.separatorChar+"fas-"+proNameMain+File.separator+"fas."+proNameMain;
+                String servicePath=codePath+File.separatorChar+"fas-"+proNameMain+File.separator+"fas."+proNameMain;
+                String providePath=codePath+File.separatorChar+"fas-"+proNameMain+File.separator+"fsoa."+proNameMain;
                 config.setApiProjectPath(apiPath);
                 config.setAppProjectPath(appPath);
                 config.setDomainProjectPath(domainPath);
+                config.setDaoProjectPath(daoPath);
+                config.setServiceProjectPath(servicePath);
+                config.setProvideProjectPath(providePath);
             }
             List<CreateCodeObjects> createCodeObjectsList=new ArrayList<CreateCodeObjects>();
             for(String fileName: fileNames.split(",")){
@@ -228,9 +236,13 @@ public class IndexController{
             List<String> tableNames=xmlService.getTableNames(dbConfig,config);
             if(tableNames!=null&&tableNames.size()>0){
                 for(CreateCodeObject createObject:createCodeObjects.getObjects()){
-                    createObject.setApiPackageName(config.getApiPackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(tableNames.get(0)));
-                    createObject.setAppPackageName(config.getAppPackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(tableNames.get(0)));
-                    createObject.setDomainPackageName(config.getDomainPackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(tableNames.get(0)));
+                    createObject.setApiPackageName(config.getApiPackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(dbConfig.getDbName()));
+                    createObject.setAppPackageName(config.getAppPackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(dbConfig.getDbName()));
+                    createObject.setDomainPackageName(config.getDomainPackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(dbConfig.getDbName()));
+                    
+                    createObject.setDaoPackageName(config.getDaoPackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(dbConfig.getDbName()));
+                    createObject.setServicePackageName(config.getServicePackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(dbConfig.getDbName()));
+                    createObject.setProvidePackageName(config.getProvidePackageNamePrefix()+"."+CreateCodeUtil.getModuleNameByTableName(dbConfig.getDbName()));
                 }
             }
             xmlService.createFileByFtl(createCodeObjects,dbConfig,config);
@@ -258,6 +270,15 @@ public class IndexController{
     @RequestMapping("/saveConfig")
     @ResponseBody
     public String saveConfig(HttpServletRequest request,HttpSession session,ConfigInformation configInformation) {
+    	Config config = configInformation.getConfig();
+    	config.setApiPackageNamePrefix(config.getDomainPackageNamePrefix());
+    	config.setAppPackageNamePrefix(config.getDomainPackageNamePrefix());
+    	config.setDomainPackageNamePrefix(config.getDomainPackageNamePrefix());
+    	config.setDaoPackageNamePrefix(config.getDomainPackageNamePrefix());
+    	config.setServicePackageNamePrefix(config.getDomainPackageNamePrefix());
+    	config.setProvidePackageNamePrefix(config.getDomainPackageNamePrefix());
+    	configInformation.setConfig(config);
+    	
         User user=(User) session.getAttribute("user");
         String fileParentPath=confRootPath+File.separator+"created"+File.separator+user.getName()+File.separator+ configInformation.getDbConfig().getDbName()+"_"+new SimpleDateFormat("yyyyMMdd##HH#mm#ss").format(new Date());
         //如果一个数据库实例生成过代码,就不要重新创建文件假存储xml了
