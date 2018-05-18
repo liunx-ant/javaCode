@@ -52,29 +52,54 @@ public class ${mainObject.className}Dto implements Serializable {
 </#list>
 
 <#list mainObject.properties as property>
+	<#--第二个字母是大写 -->
+	<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+	public ${property.type} get${property.name}() {
+	<#else>
 	public ${property.type} get${property.name?cap_first}() {
+	</#if>
         return ${property.name};
     }
-
+	<#--第二个字母是大写 -->
+	<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+    public void set${property.name}(${property.type} ${property.name}) {
+	<#else>
     public void set${property.name?cap_first}(${property.type} ${property.name}) {
+	</#if>
         this.${property.name} = ${property.name}; 
     }
     
-   		<#if property.type =='Date'>
-   		
+	<#if property.type =='Date'>
+   		<#--第二个字母是大写 -->
+   		<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+    public ${property.type} get${property.name}StartDate() {
+		<#else>
     public ${property.type} get${property.name?cap_first}StartDate() {
+		</#if>	
         return ${property.name}StartDate;
     }
-
+    <#--第二个字母是大写 -->
+		<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+    public void set${property.name}StartDate(${property.type} ${property.name}StartDate) {
+		<#else>
     public void set${property.name?cap_first}StartDate(${property.type} ${property.name}StartDate) {
+		</#if>
         this.${property.name}StartDate = ${property.name}StartDate; 
     }
-    
+    <#--第二个字母是大写 -->
+    	<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+    public ${property.type} get${property.name}EndDate() {
+		<#else>
     public ${property.type} get${property.name?cap_first}EndDate() {
+		</#if>
         return ${property.name}EndDate;
     }
-
+    <#--第二个字母是大写 -->
+		<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+    public void set${property.name}EndDate(${property.type} ${property.name}EndDate) {
+		<#else>
     public void set${property.name?cap_first}EndDate(${property.type} ${property.name}EndDate) {
+		</#if>
         this.${property.name}EndDate = ${property.name}EndDate; 
     }
     </#if>

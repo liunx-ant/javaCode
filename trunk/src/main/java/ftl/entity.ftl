@@ -34,11 +34,20 @@ public class ${mainObject.className} implements Serializable {
 </#list>
 
 <#list mainObject.properties as property>
+	<#--第二个字母是大写 -->
+	<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+	public ${property.type} get${property.name}() {
+	<#else>
 	public ${property.type} get${property.name?cap_first}() {
+	</#if>
         return ${property.name};
     }
-
+	<#--第二个字母是大写 -->
+	<#if ("ABCDEFGHIGKLMNOPQRSTUVWXYZ"?index_of("${property.name?substring(1,2)}") != -1)>
+    public void set${property.name}(${property.type} ${property.name}) {
+	<#else>
     public void set${property.name?cap_first}(${property.type} ${property.name}) {
+	</#if>
         this.${property.name} = ${property.name}; 
     }
     
