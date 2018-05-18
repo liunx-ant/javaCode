@@ -83,15 +83,21 @@ public class CreateCodeService {
         
         // 生成代码前,先清空之前生成的代码
         DelAllFile.delFolder(config.getApiProjectPath());
-        DelAllFile.delFolder(config.getAppProjectPath());
-        DelAllFile.delFolder(config.getDomainProjectPath());
+        DelAllFile.delFolder(config.getAppProjectPath()+".controller");
+        DelAllFile.delFolder(config.getDomainProjectPath()+".domain");
+        DelAllFile.delFolder(config.getDaoProjectPath()+".dao");
+        DelAllFile.delFolder(config.getServiceProjectPath()+".service");
+        DelAllFile.delFolder(config.getProvideProjectPath()+".provide");
         for(CreateCodeObjects createCodeObjects : createCodeObjectsList){
             // 设置FreeMarker 使用的root值
             rootMap = CreateCodeUtil.createCodeObjectsToMap(createCodeObjects);
             System.out.println(createCodeObjects.getMainObject().getTitle()+":");
             System.out.println("    api文件生成:"+config.getApiProjectPath());
-            System.out.println("    app文件生成:"+config.getAppProjectPath());
-            System.out.println("    domain文件生成:"+config.getDomainProjectPath());
+            System.out.println("    app文件生成:"+config.getAppProjectPath()+".controller");
+            System.out.println("    domain文件生成:"+config.getDomainProjectPath()+".domain");
+            System.out.println("    dao文件生成:"+config.getDaoProjectPath()+".dao");
+            System.out.println("    service文件生成:"+config.getServiceProjectPath()+".service");
+            System.out.println("    provide文件生成:"+config.getProvideProjectPath()+".provide");
             String []s=createCodeObjects.getMainObject().getApiPackageName().split("\\.");
             String []s1=createCodeObjects.getMainObject().getAppPackageName().split("\\.");
             String []s2=createCodeObjects.getMainObject().getDomainPackageName().split("\\.");
