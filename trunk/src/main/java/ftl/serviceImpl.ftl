@@ -128,7 +128,7 @@ public class ${mainObject.className}ServiceImpl implements I${mainObject.classNa
     @Override
     public Page<${mainObject.className}Vo> queryAll(${mainObject.className}Dto ${mainObject.objectName}Dto ,int pageNum , int pageSize){
      
-        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
+        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.lastupd desc");//排序
         List<${mainObject.className}Vo> list = ${mainObject.objectName}Dao.getAll(${mainObject.objectName}Dto);
         return (Page<${mainObject.className}Vo>)list;
     }
@@ -145,9 +145,9 @@ public class ${mainObject.className}ServiceImpl implements I${mainObject.classNa
     public Page<${mainObject.className}Vo> queryAllInnerJoin(${mainObject.className}Dto ${mainObject.objectName}Dto ,int pageNum , int pageSize){
     	${mainObject.className} ${mainObject.objectName}= JSON.parseObject(modelStr, ${mainObject.className}.class);
         if(pageSize==0){
-	        PageHelper.startPage(1,pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
+	        PageHelper.startPage(1,pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}. desc");//排序
       	}else{
-	        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
+	        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}. desc");//排序
       	}
       	List<${mainObject.className}Vo> list = ${mainObject.objectName}Dao.getAllInnerJoin(${mainObject.objectName}Dto);
         return (Page<${mainObject.className}Vo>)list;
@@ -165,9 +165,9 @@ public class ${mainObject.className}ServiceImpl implements I${mainObject.classNa
     
     	${mainObject.className} ${mainObject.objectName}= JSON.parseObject(modelStr, ${mainObject.className}.class);
       	if(pageSize==0){
-	        PageHelper.startPage(1,pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
+	        PageHelper.startPage(1,pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.lastupd desc");//排序
       	}else{
-	        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.last_upd desc");//排序
+	        PageHelper.startPage((pageSize==0?1:pageNum),pageSize,"<#list objects as object><#list object.properties as property><#if property.propertyList.isExist && property.propertyList.orderBy != '' >${object.objectName}.${property.colName} ${property.propertyList.orderBy} ,</#if></#list></#list>${mainObject.objectName}.lastupd desc");//排序
       	}
       	List<${mainObject.className}Vo> list = ${mainObject.objectName}Dao.getAllLeftJoin(${mainObject.objectName}Dto);
         return (Page<${mainObject.className}Vo>)list;
