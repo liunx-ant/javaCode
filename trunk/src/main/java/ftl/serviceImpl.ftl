@@ -17,7 +17,7 @@ import ${mainObject.apiPackageName}.consumer.vo.${object.className}Vo;
 </#list>   
 import ${mainObject.servicePackageName}.service.I${mainObject.className}Service;
 <#list objects as object>
-import ${mainObject.apiPackageName}.dao.${object.className}Dao;
+import ${mainObject.apiPackageName}.dao.I${object.className}Dao;
 </#list> 
 
 /**
@@ -34,7 +34,7 @@ public class ${mainObject.className}ServiceImpl implements I${mainObject.classNa
 <#list objects as object>
 	//${object.title}Dao
     @Autowired
-    private ${object.className}Dao ${object.objectName}Dao;
+    private I${object.className}Dao ${object.objectName}Dao;
 </#list>    
 
 	/**
@@ -62,7 +62,7 @@ public class ${mainObject.className}ServiceImpl implements I${mainObject.classNa
 	 */
 	@Override
 	public int update(${mainObject.className} ${mainObject.objectName}){
-		${mainObject.objectName}.setLastUpd(new Date());
+		${mainObject.objectName}.setLastupd(new Date());
 		int i =${mainObject.objectName}Dao.updateByIdSelective(${mainObject.objectName});
 		
 <#list mainObject.objectRels as objectRel>

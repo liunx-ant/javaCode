@@ -16,7 +16,7 @@ import ${mainObject.apiPackageName}.consumer.vo.${mainObject.className}Vo;
   * Copyright ${copyright}
  */
 @MyBatisRepository
-public interface ${mainObject.className}Dao extends IBaseMapper<${mainObject.className}>{
+public interface I${mainObject.className}Dao extends IBaseMapper<${mainObject.className}>{
 
 	/**
 	 * 删除实体信息

@@ -183,7 +183,7 @@ public class CreateCodeService {
                     Freemarker.printFile("vo.ftl", rootMap, createCodeObject.getClassName() + "Vo.java", api+g+"vo", config.getFtlFolderPath());
                     Freemarker.printFile("dto.ftl", rootMap, createCodeObject.getClassName() + "Dto.java",api +g+"dto", config.getFtlFolderPath());
                     //sql
-                    Freemarker.printFile("dao.ftl", rootMap, createCodeObject.getClassName() + "Dao.java", dao + g+"dao"+g, config.getFtlFolderPath());
+                    Freemarker.printFile("dao.ftl", rootMap, "I"+createCodeObject.getClassName() + "Dao.java", dao + g+"dao"+g, config.getFtlFolderPath());
                     Freemarker.printFile("mapper.ftl", rootMap, createCodeObject.getClassName() + "Mapper.xml", dao + g+"mappers"+g, config.getFtlFolderPath());
                 }
             }
